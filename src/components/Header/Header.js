@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
-import { DiCssdeck } from "react-icons/di";
+import { DiCodeBadge } from "react-icons/di";
 import {
   Container,
   Div1,
@@ -18,7 +18,7 @@ const Header = () => (
     <Div1>
       <Link href="/">
         <A>
-          <DiCssdeck size="3rem" /> <Span>Steven Penafiel</Span>
+          <DiCodeBadge size="3rem" /> <Span>Steven Peñafiel</Span>
         </A>
       </Link>
     </Div1>
@@ -30,7 +30,7 @@ const Header = () => (
       </li>
       <li>
         <Link href="#tec">
-          <NavLink>Tecnologias</NavLink>
+          <NavLink>Tecnologías</NavLink>
         </Link>
       </li>
       <li>
@@ -40,10 +40,13 @@ const Header = () => (
       </li>
     </Div2>
     <Div3>
-      <SocialIcons href="https://github.com" target="_blank">
+      <SocialIcons href="https://github.com/stvdn" target="_blank">
         <AiFillGithub size="3rem"></AiFillGithub>
       </SocialIcons>
-      <SocialIcons href="https://linkedin.com" target="_blank">
+      <SocialIcons
+        href="https://www.linkedin.com/in/stevendanny/"
+        target="_blank"
+      >
         <AiFillLinkedin size="3rem"></AiFillLinkedin>
       </SocialIcons>
     </Div3>

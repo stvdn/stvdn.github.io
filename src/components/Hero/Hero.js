@@ -7,16 +7,22 @@ import {
 import Button from "../../styles/GlobalComponents/Button";
 import { LeftSection } from "./HeroStyles";
 
-const Hero = (props) => (
-  <Section row nopadding>
-    <LeftSection>
-      <SectionTitle main center>
-        ¿Tienes algún proyecto <br /> en mente? <br />
-      </SectionTitle>
-      <SectionText>Expande tu negocio al mundo virtual</SectionText>
-      <Button>Contactar</Button>
-    </LeftSection>
-  </Section>
-);
+const Hero = (props) => {
+  const downloadCV = () => {
+    window.location.href =
+      "https://github.com/stvdn/stvdn.github.io/assets/cv.pdf";
+  };
+  return (
+    <Section row nopadding>
+      <LeftSection>
+        <SectionTitle main center>
+          Steven Peñafiel
+        </SectionTitle>
+        <SectionText>Programador</SectionText>
+        <Button onClick={downloadCV}>CV</Button>
+      </LeftSection>
+    </Section>
+  );
+};
 
 export default Hero;
