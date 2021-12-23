@@ -11,7 +11,7 @@ import FileSaver from "file-saver";
 const Hero = (props) => {
   const saveFile = () => {
     FileSaver.saveAs(
-      "http://www.africau.edu/images/default/sample.pdf",
+      "https://stvdn.github.io/assets/cv.pdf",
       "StevenPenafielCV.pdf"
     );
   };
