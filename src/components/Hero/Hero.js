@@ -6,11 +6,14 @@ import {
 } from "../../styles/GlobalComponents";
 import Button from "../../styles/GlobalComponents/Button";
 import { LeftSection } from "./HeroStyles";
+import FileSaver from "file-saver";
 
 const Hero = (props) => {
-  const downloadCV = () => {
-    window.location.href =
-      "https://github.com/stvdn/stvdn.github.io/assets/cv.pdf";
+  const saveFile = () => {
+    FileSaver.saveAs(
+      "http://www.africau.edu/images/default/sample.pdf",
+      "StevenPenafielCV.pdf"
+    );
   };
   return (
     <Section row nopadding>
@@ -19,7 +22,7 @@ const Hero = (props) => {
           Steven Peñafiel
         </SectionTitle>
         <SectionText>Programador</SectionText>
-        <Button onClick={downloadCV}>CV</Button>
+        <Button onClick={saveFile}>CV</Button>
       </LeftSection>
     </Section>
   );
