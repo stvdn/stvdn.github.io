@@ -22,7 +22,7 @@ const Technologies = () => (
     <br />
     <SectionTitle>Tecnologías</SectionTitle>
     <SectionText>
-      Rápida adaptación a los lenguajes de programación.
+      Tengo una rápida adaptación a los lenguajes de programación.
     </SectionText>
     <List>
       <ListItem>

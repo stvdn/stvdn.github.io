@@ -21,7 +21,9 @@ const Hero = (props) => {
         <SectionTitle main center>
           Steven Peñafiel
         </SectionTitle>
-        <SectionText>Programador</SectionText>
+        <SectionText>
+          Soy un estudiante de ingeniería en sistemas en busca de nuevos retos.
+        </SectionText>
         <Button onClick={saveFile}>CV</Button>
       </LeftSection>
     </Section>

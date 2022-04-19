@@ -16,6 +16,7 @@ import {
 import {
   Section,
   SectionDivider,
+  SectionText,
   SectionTitle,
 } from "../../styles/GlobalComponents";
 import { projects } from "../../constants/constants";
@@ -24,6 +25,10 @@ const Projects = () => (
   <Section id="projects">
     <SectionDivider />
     <SectionTitle main>Proyectos</SectionTitle>
+    <SectionText>
+      He desarrollado proyectos personales para poner en práctica mis
+      conocimientos.
+    </SectionText>
     <GridContainer>
       {projects.map(
         ({ id, image, title, description, tags, source, visit }) => (
