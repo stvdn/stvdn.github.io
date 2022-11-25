@@ -16,7 +16,6 @@ const Home = () => {
       </Section>
       <Experience/>
       <Technologies />
-      <Timeline />
     </Layout>
   );
 };
