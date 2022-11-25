@@ -22,7 +22,7 @@ const Hero = (props) => {
           Steven Peñafiel
         </SectionTitle>
         <SectionText>
-          Soy un estudiante de ingeniería en sistemas en busca de nuevos retos.
+        Soy un ingeniero en sistemas de información a quien le apasiona la programación y con una rápida adaptabilidad a los diferentes lenguajes. 
         </SectionText>
         <Button onClick={saveFile}>CV</Button>
       </LeftSection>

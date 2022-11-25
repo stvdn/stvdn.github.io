@@ -17,9 +17,6 @@ import {
 const Technologies = () => (
   <Section id="tec">
     <SectionDivider />
-    <br />
-    <br />
-    <br />
     <SectionTitle>Tecnologías</SectionTitle>
     <SectionText>
       Tengo una rápida adaptación a los lenguajes de programación.
