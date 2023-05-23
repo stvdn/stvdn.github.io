@@ -1,7 +1,21 @@
 export const TimeLineExperienceData = [
   {
     title: "Ingeniero de software",
-    date: "Mayo 2022 – Noviembre 2022",
+    date: "Diciembre 2022 – Actual",
+    enterprise: "Redsis",
+    location: "Remoto",
+    stack: ["Python", "API REST", "Trello", "JAMS", "GoAnywhere", "Scrum" ],
+    tasks: [
+      "Empresa proveedora de soluciones informáticas.",
+      "Migración del sistema actual de agendamiento automático del Banco Bolivariano al sistema de agendamiento automático JAMS, mediante Python y API REST para la transformación de los procesos.",
+      "Toma de requerimientos con el personal operativo, diseñando las soluciones pertinentes.",
+      "Extensión de funcionalidades de la herramienta con scripts de python y .net para cumplir los requerimientos del cliente."
+    ],
+    icon: "FaChalkboardTeacher"
+  },
+  {
+    title: "Ingeniero de software",
+    date: "Mayo 2022 – Diciembre 2022",
     enterprise: "WebCoop",
     location: "Quito, Ecuador",
     stack: ["PHP", "Laravel", "MySQL", "JavaScript", "GitHub", "Scrum", "Jira"],

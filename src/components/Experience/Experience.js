@@ -31,12 +31,12 @@ const ListTimeLine = (props) => {
         className="vertical-timeline-element--work"
         contentStyle={{ background: _default.colors.background1, border: "1px solid #fff", color: "#fff" }}
         contentArrowStyle={{ borderRight: "7px solid  #fff" }}
-        date="2011 - present"
+        date={props.date}
         iconStyle={{ background: _default.colors.background1, color: '#fff' }}
         icon={<props.icon />}
     >
         <TitleTimeLineElement>{props.title}</TitleTimeLineElement>
-        <SubtitleTimeLineElement>{props.date} • {props.enterprise} • {props.location}</SubtitleTimeLineElement>
+        <SubtitleTimeLineElement>{props.enterprise} • {props.location}</SubtitleTimeLineElement>
         {listTimeLineElement}
     </VerticalTimelineElement>)
 }

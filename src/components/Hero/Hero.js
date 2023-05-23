@@ -22,9 +22,8 @@ const Hero = (props) => {
           Steven Peñafiel
         </SectionTitle>
         <SectionText>
-        Soy un ingeniero en sistemas de información a quien le apasiona la programación y con una rápida adaptabilidad a los diferentes lenguajes. 
+        Soy un ingeniero en sistemas de información a quien le apasiona la tecnología. Gracias a mis estudios, mi autoeducación y mis trabajos en organizaciones y empresas adquirí habilidades de programación, comunicación, planificación, entre otras , con una rápida adaptabilidad y solución de retos.  
         </SectionText>
-        <Button onClick={saveFile}>CV</Button>
       </LeftSection>
     </Section>
   );
