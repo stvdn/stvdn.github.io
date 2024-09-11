@@ -1,7 +1,8 @@
-import { Header } from "./ui/Header";
-import { About } from "./ui/About";
-import { Experience } from "./ui/Experience";
-import { Archivement } from "./ui/Archivement";
+import { Header } from "./Header";
+import { About } from "./About";
+import { Experience } from "./Experience";
+import { Archivement } from "./Archivement";
+import { Footer } from "./Footer";
 
 export default function Page() {
   return (
@@ -11,6 +12,7 @@ export default function Page() {
       <About />
       <Experience />
       <Archivement />
+      <Footer />
     </div>
   );
 }

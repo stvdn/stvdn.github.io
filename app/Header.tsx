@@ -11,10 +11,11 @@ export const Header: React.FC = () => {
           </h2>
         </div>
         <a
-          href="#"
-          className="flex space-x-5 px-5 py-3 text-lg text-blue-500 rounded-lg bg-blue-500/10 border-2 border-blue-500/75 hover:text-neutral-50 hover:bg-blue-500/75 hover:border-blue-500"
+          href="/docs/CVEn.pdf"
+          target="_blank	"
+          className="flex space-x-2 px-5 py-3 text-lg text-blue-500 rounded-lg bg-blue-500/10 border-2 border-blue-500/75 hover:text-neutral-50 hover:bg-blue-500/75 hover:border-blue-500"
         >
-          <span className="material-symbols-rounded icon-cv">description</span>
+          <span className="icon-[line-md--download-loop] text-3xl"></span>
           <span>Open/Download CV</span>
         </a>
       </div>
