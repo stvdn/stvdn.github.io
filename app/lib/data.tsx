@@ -118,7 +118,7 @@ const experiences = [
     company: "FULLEF",
     location: "Quito, Ecuador",
     time: "August 2020 - December 2020",
-    rol: "Teacher",
+    rol: "Mentor",
     intro:
       "The organization aims to improve the technological landscape in Ecuador by starting with education in schools across the country. After completing leadership courses, I was assigned a group of students whom I guided and taught about software development.",
     tasks: [

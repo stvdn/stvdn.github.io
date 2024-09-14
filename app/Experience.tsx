@@ -23,17 +23,17 @@ const ExperienceItem: React.FC<ExperencieItemtProps> = ({ experience }) => {
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      className="flex flex-col gap-2 mx-16 py-12 lg:mx-24 border-b-2 border-neutral-500 last:border-none"
+      className="w-80 flex flex-col gap-2 mx-16 py-12 lg:mx-24 border-b-2 border-neutral-500 last:border-none md:w-full"
     >
-      <h2>
-        <span className="text-2xl font-bold px-2 py-1 bg-neutral-50 text-neutral-900 rounded-lg">
+      <h2 className="flex items-end flex-wrap gap-y-3">
+        <span className="text-xl md:text-2xl font-bold px-2 py-1 bg-neutral-50 text-neutral-900 rounded-lg">
           {experience.rol}
-        </span>
-        <span className="ml-2 text-2xl font-bold">at {experience.company}</span>
+        </span>&nbsp;
+        <span className="text-xl font-bold md:text-2xl ">at {experience.company}</span>
       </h2>
       <p>{experience.location}</p>
       <p>{experience.time}</p>
-      <div className="flex my-2">
+      <div className="flex flex-wrap gap-y-3 my-2">
         {experience.stack.map((tec, index) => (
           <span
             key={index}
@@ -57,7 +57,7 @@ export const Experience: React.FC = () => {
   const experienceList: ExperencieItem[] = experiences;
 
   return (
-    <div className="section bg-neutral-800 rounded-3xl ">
+    <div className="bg-neutral-800 rounded-3xl flex flex-col items-center sm:mx-24 sm:px-16">
       <h1 className="flex items-center justify-center gap-2 text-4xl font-bold mt-12">
         <span className="icon-[line-md--briefcase-filled]"></span>
         Experience

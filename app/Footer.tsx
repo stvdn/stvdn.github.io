@@ -18,8 +18,11 @@ export const Footer: React.FC = () => {
         ))}
       </div>
       <p className="text-sm text-center mt-5">
-        © This is my personal web portfolio. Feel free to review the source code
-        on my GitHub.
+        © This is my personal web portfolio. Feel free to review the 
+        <a className="text-blue-500" href="https://github.com/stvdn/stvdn.github.io" target="_blank">
+         &nbsp; source code &nbsp;
+        </a>
+         on my GitHub.
       </p>
     </div>
   );

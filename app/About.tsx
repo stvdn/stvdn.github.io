@@ -30,8 +30,7 @@ export const About: React.FC = () => {
   const contactInfo: ContactInfoItem[] = contactData;
 
   return (
-    <div className="section">
-      <div className="grid grid-cols-1 gap-9 md:grid-cols-2 lg:gap-20">
+      <div className="grid grid-cols-1 gap-9 py-6 px-10 md:grid-cols-2 lg:gap-20 md:px-24 md:py-12">
         <div className="flex flex-col">
           <HeadingIcon
             heading="About Me"
@@ -53,6 +52,5 @@ export const About: React.FC = () => {
           </ul>
         </div>
       </div>
-    </div>
   );
 };

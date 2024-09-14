@@ -29,14 +29,14 @@ const ArchivementItem: React.FC<ArchivementItemProps> = ({ archievement }) => {
             archievement.completed == true
               ? "icon-[line-md--confirm-square-filled]"
               : "icon-[line-md--confirm-square-filled-to-square-filled-transition]"
-          } text-2xl`}
+          } hidden text-2xl md:blockz`}
         ></span>
         <h2 className="text-2xl font-bold">{archievement.title}</h2>
       </div>
       <p>{archievement.courseOwner}</p>
       {archievement.link && (
-        <a href={archievement.link} target="_blank">
-          {archievement.link}
+        <a className="text-blue-500" href={archievement.link} target="_blank">
+          Certificate Link
         </a>
       )}
       <p>{archievement.type}</p>
