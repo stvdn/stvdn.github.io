@@ -43,7 +43,9 @@ Crea un archivo .yml en la carpeta .github/workflows/ con el nombre nextjs.yml y
 Después de configurar todo, haz commit y push de tus cambios a GitHub:
 
 git add .
+
 git commit -m "Set up GitHub Pages deployment"
+
 git push origin main
 
 Una vez hecho el push, GitHub Actions construirá y desplegará automáticamente tu portafolio en GitHub Pages en el link nombredeusuario.github.io
