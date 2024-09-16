@@ -1,49 +1,50 @@
-# Next.js Portfolio with TypeScript
+# Portafolio Next.js con TypeScript
 
-Welcome to my personal minimalist web portfolio built with **Next.js** and **TypeScript**. This project is deployed using **GitHub Pages** and **GitHub Actions** for seamless integration and automated deployment. Feel free to explore, reproduce the code, or reach out if you have any questions!
+Bienvenido a mi portafolio web personal minimalista construido con **Next.js** y **TypeScript**. Este proyecto está desplegado usando **GitHub Pages** y **GitHub Actions** para una integración sin problemas y despliegue automatizado. ¡Siéntete libre de reproducir el código o contactarme si tienes alguna pregunta! 🤝
 
-## 🚀 Features
+## 🚀 Características
 
-- **Next.js** for modern React development
-- **TypeScript** for static type-checking and enhanced code reliability
-- **Responsive design** optimized for all devices
-- **GitHub Pages** for hosting the static site
-- **GitHub Actions** for continuous integration and deployment
+- **Next.js** para un desarrollo moderno con React
+- **TypeScript** para la verificación de tipos estáticos y mayor fiabilidad del código
+- **Diseño responsivo** optimizado para todos los dispositivos
+- **GitHub Pages** para alojar el sitio estático
+- **GitHub Actions** para integración y despliegue continuo
 
-## 📦 Steps for Deployment
+## 📦 Pasos para el Despliegue
 
-### 1. Enable GitHub Actions
+**IMPORTANTE:** El nombre del repositorio debe ser nombredeusuario.github.io
 
-Enable GitHub Actions for the repository by following [this guide](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow).
+### 1. Habilitar GitHub Actions
 
-### 2. Configure Static Page Generation in Next.js
+Habilita GitHub Actions para el repositorio siguiendo [esta guía](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow).
 
-Update your Next.js configuration to enable static site generation and set the base path to the project name. Modify the `next.config.mjs` file as follows:
+### 2. Configurar la Generación de Páginas Estáticas en Next.js
+
+Actualiza tu configuración de Next.js para habilitar la generación de sitios estáticos y establecer la ruta base con el nombre del proyecto. Modifica el archivo `next.config.mjs` de la siguiente manera:
 
 ```javascript
 // FILE: next.config.mjs
 const nextConfig = {
-  //another config
+  //alguna otra configuración
   output: "export",
-  basePath: "/portfolio", // Set this to the name of your project from package.json
+  basePath: "/portfolio", // Establece esto con el nombre de tu proyecto en package.json
 };
+
+export default nextConfig;
 ```
 
-### 3. Set Up GitHub Action Workflows
+### 3. Configurar los Flujos de Trabajo de GitHub Actions
 
-Create a .yml file in the .github/workflows/ folder with the name nextjs.yml and copy the content of the file from the same path in this repository.
+Crea un archivo .yml en la carpeta .github/workflows/ con el nombre nextjs.yml y copia el contenido del archivo que esta en la misma ruta en este repositorio.
 
-### 4. Commit and Push Changes
 
-After setting up everything, commit and push your changes to GitHub:
+### 4. Realiza Commit y Push de los Cambios
+
+Después de configurar todo, haz commit y push de tus cambios a GitHub:
 
 git add .
 git commit -m "Set up GitHub Pages deployment"
 git push origin main
 
-Once pushed, GitHub Actions will automatically build and deploy your portfolio to GitHub Pages.
-
-## 🤝 Contributing
-
-Feel free to fork this repository, submit issues, or create pull requests if you have any suggestions or improvements!
+Una vez hecho el push, GitHub Actions construirá y desplegará automáticamente tu portafolio en GitHub Pages en el link nombredeusuario.github.io
 
