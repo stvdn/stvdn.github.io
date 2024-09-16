@@ -12,11 +12,7 @@ interface ArchivementItem {
   completed: boolean;
 }
 
-interface ArchivementItemProps {
-  archievement: ArchivementItem;
-}
-
-const ArchivementItem: React.FC<ArchivementItemProps> = ({ archievement }) => {
+const ArchivementItem: React.FC<ArchivementItem> = ({title, courseOwner, link, type, completed}) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -26,20 +22,20 @@ const ArchivementItem: React.FC<ArchivementItemProps> = ({ archievement }) => {
       <div className="flex items-center gap-2">
         <span
           className={`${
-            archievement.completed == true
+            completed
               ? "icon-[line-md--confirm-square-filled]"
               : "icon-[line-md--confirm-square-filled-to-square-filled-transition]"
-          } hidden text-2xl md:blockz`}
+          } hidden text-2xl md:block`}
         ></span>
-        <h2 className="text-2xl font-bold">{archievement.title}</h2>
+        <h2 className="text-2xl font-bold">{title}</h2>
       </div>
-      <p>{archievement.courseOwner}</p>
-      {archievement.link && (
-        <a className="text-blue-500" href={archievement.link} target="_blank">
+      <p>{courseOwner}</p>
+      {link && (
+        <a className="text-blue-500" href={link} target="_blank">
           Certificate Link
         </a>
       )}
-      <p>{archievement.type}</p>
+      <p>{type}</p>
     </motion.div>
   );
 };
@@ -53,7 +49,7 @@ export const Archivement: React.FC = () => {
         <span className="icon-[line-md--star-alt-filled]"></span> Archivements
       </h1>
       {archivementsList.map((archievement, index) => (
-        <ArchivementItem archievement={archievement} key={index} />
+        <ArchivementItem {...archievement} key={index} />
       ))}
     </div>
   );

@@ -14,11 +14,7 @@ interface ExperencieItem {
   stack: string[];
 }
 
-interface ExperencieItemtProps {
-  experience: ExperencieItem;
-}
-
-const ExperienceItem: React.FC<ExperencieItemtProps> = ({ experience }) => {
+const ExperienceItem: React.FC<ExperencieItem> = ({ company, location, time, rol, intro, tasks, stack }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -27,14 +23,14 @@ const ExperienceItem: React.FC<ExperencieItemtProps> = ({ experience }) => {
     >
       <h2 className="flex items-end flex-wrap gap-y-3">
         <span className="text-xl md:text-2xl font-bold px-2 py-1 bg-neutral-50 text-neutral-900 rounded-lg">
-          {experience.rol}
+          {rol}
         </span>&nbsp;
-        <span className="text-xl font-bold md:text-2xl ">at {experience.company}</span>
+        <span className="text-xl font-bold md:text-2xl ">at {company}</span>
       </h2>
-      <p>{experience.location}</p>
-      <p>{experience.time}</p>
+      <p>{location}</p>
+      <p>{time}</p>
       <div className="flex flex-wrap gap-y-3 my-2">
-        {experience.stack.map((tec, index) => (
+        {stack.map((tec, index) => (
           <span
             key={index}
             className="bg-neutral-50 text-neutral-900 text-sm font-bold me-2 px-2.5 py-0.5 rounded border border-neutral-900"
@@ -43,9 +39,9 @@ const ExperienceItem: React.FC<ExperencieItemtProps> = ({ experience }) => {
           </span>
         ))}
       </div>
-      <p>{experience.intro}</p>
+      <p>{intro}</p>
       <ul className="list-disc ml-10">
-        {experience.tasks.map((task, index) => (
+        {tasks.map((task, index) => (
           <li key={index}>{task}</li>
         ))}
       </ul>
@@ -63,7 +59,7 @@ export const Experience: React.FC = () => {
         Experience
       </h1>
       {experienceList.map((experience, index) => (
-        <ExperienceItem experience={experience} key={index} />
+        <ExperienceItem {...experience} key={index} />
       ))}
     </div>
   );
