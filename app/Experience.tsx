@@ -53,7 +53,7 @@ export const Experience: React.FC = () => {
   const experienceList: ExperencieItem[] = experiences;
 
   return (
-    <div className="bg-neutral-800 rounded-3xl flex flex-col items-center sm:mx-24 sm:px-16">
+    <div className="bg-[#33415c] border-2 border-neutral-500 rounded-3xl flex flex-col items-center sm:mx-24 sm:px-16">
       <h1 className="flex items-center justify-center gap-2 text-4xl font-bold mt-12">
         <span className="icon-[line-md--briefcase-filled]"></span>
         Experience

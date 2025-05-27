@@ -14,7 +14,7 @@ export default function RootLayout({
           rel="stylesheet"
         ></link>
       </head>
-      <body className="bg-neutral-900">{children}</body>
+      <body className="bg-[#001233]">{children}</body>
     </html>
   );
 }
