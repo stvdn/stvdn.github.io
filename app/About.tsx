@@ -23,10 +23,7 @@ const HeadingIcon: React.FC<HeadingIconProps> = ({ heading, icon }) => {
 };
 
 export const About: React.FC = () => {
-  const introMsg: string = `I am a systems engineer with experience in software development across web, mobile, and process automation programming languages. 
-  I have worked for financial institutions, startups, and as a freelancer, always contributing my knowledge to develop scalable solutions and my flexibility 
-  to learn new technologies. Currently, I am training in cloud computing with AWS, with the aim of focusing my career towards the role of solutions architect.`;
-
+  const introMsg: string = "Highly adaptable software engineer with 4 years of experience in software development. My experience includes developing web applications and implementing software solutions, leveraging languages like Python, PowerShell, JavaScript, and PHP, along with frameworks such as Angular, React, Laravel, and Flask. I enjoy working in collaborative, agile teams and continuously seek to grow as a software engineer.";
   const contactInfo: ContactInfoItem[] = contactData;
 
   return (

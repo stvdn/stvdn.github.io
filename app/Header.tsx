@@ -1,4 +1,6 @@
+'use client'
 import React from "react";
+import Typewriter from 'typewriter-effect';
 
 export const Header: React.FC = () => {
   return (
@@ -6,8 +8,15 @@ export const Header: React.FC = () => {
         <div className="flex-1 space-y-2">
           <h1 className="font-bold text-4xl md:text-5xl">Steven Penafiel</h1>
           <h2 className="min-w-44	font-bold text-neutral-400 text-2xl md:text-3xl text-balance">
-            Software Engenier
+            <Typewriter
+              options={{
+                strings: ["Software Engineer"],
+                autoStart: true,
+                loop: true,
+              }}
+            />
           </h2>
+
         </div>
         <a
           href="/docs/CVEn.pdf"

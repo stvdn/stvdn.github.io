@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
   const mediaInfo: MediaItem[] = medias;
 
   return (
-    <div className="bg-neutral-800 w-full py-10 px-5 rounded-md">
+    <div className="bg-blue-500/10 border-t-2 border-blue-500/75 w-full py-10 px-5 rounded-md">
       <div className="flex gap-5 items-center justify-center">
         {medias.map((media, index) => (
           <MediaButton key={index} icon={media.icon} link={media.link} />

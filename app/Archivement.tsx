@@ -44,7 +44,7 @@ export const Archivement: React.FC = () => {
   const archivementsList: ArchivementItem[] = archivements;
 
   return (
-    <div className="section bg-neutral-800 rounded-3xl">
+    <div className="section bg-blue-500/10 border-2 border-blue-500/75 rounded-3xl">
       <h1 className="flex items-center justify-center gap-2 text-4xl font-bold mt-12">
         <span className="icon-[line-md--star-alt-filled]"></span> Archivements
       </h1>
