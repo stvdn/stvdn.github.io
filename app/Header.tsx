@@ -6,7 +6,7 @@ export const Header: React.FC = () => {
   return (
       <div className="flex flex-col items-center w-full py-6 gap-4 text-center md:flex-row md:text-left md:px-24 md:py-12">
         <div className="flex-1 space-y-2">
-          <h1 className="font-bold text-4xl md:text-5xl">Steven Penafiel</h1>
+          <h1 className="font-bold text-4xl md:text-5xl">Steven Peñafiel</h1>
           <h2 className="min-w-44	font-bold text-neutral-400 text-2xl md:text-3xl text-balance">
             <Typewriter
               options={{
