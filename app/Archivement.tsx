@@ -17,7 +17,7 @@ const ArchivementItem: React.FC<ArchivementItem> = ({title, courseOwner, link, t
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      className="flex flex-col gap-2 mx-16 py-12 lg:mx-24 border-b-2 border-neutral-500 last:border-none"
+      className="flex flex-col gap-2 py-12 mx-16 lg:mx-24 border-b-2 border-neutral-500 last:border-none"
     >
       <div className="flex items-center gap-2">
         <span
@@ -44,7 +44,7 @@ export const Archivement: React.FC = () => {
   const archivementsList: ArchivementItem[] = archivements;
 
   return (
-    <div className="section bg-blue-500/10 border-2 border-blue-500/75 rounded-3xl">
+    <div className="section bg-blue-500/10 border-2 border-blue-500/75 rounded-3xl mx-96 lg:mx-40">
       <h1 className="flex items-center justify-center gap-2 text-4xl font-bold mt-12">
         <span className="icon-[line-md--star-alt-filled]"></span> Archivements
       </h1>
