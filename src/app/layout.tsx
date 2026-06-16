@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${schibstedGrotesk.variable} h-full`}>
       <body className="min-h-full bg-black font-sans text-white antialiased">
-        <div className="mx-auto max-w-6xl px-6 py-8 md:px-10 md:py-12 lg:px-16">
+        <div className="mx-auto max-w-7xl px-6 py-8 md:pt-12">
           {children}
         </div>
       </body>

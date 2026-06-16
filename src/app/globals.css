@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* Existing Grayscales */
   --color-black: #000000;
   --color-white: #ffffff;
   --color-gray-100: #f5f5f5;
@@ -13,18 +14,42 @@
   --color-gray-800: #262626;
   --color-gray-900: #171717;
 
+  /* 1. Figma Color Styles */
+  --color-background-1: #000000; /* Replace with exact Figma HEX if different */
+  
+  --color-accent-1: #222222;
+  --color-accent-2: var(--color-white);
+  
+  --color-text-paragraph-1: var(--color-white);
+  --color-text-paragraph-2: var(--color-gray-400); 
+  --color-text-link: var(--color-white);
+  --color-text-link-secondary: var(--color-black);
+  
+  --color-divider-1: var(--color-gray-800);
+
+  /* 2. Figma Text Styles (Size & Line Height) */
+  --text-heading-1--line-height: 1.45;
+  
+  --text-heading-2--line-height: 1.30;
+  
+  --text-heading-3--line-height: 1.30;
+  
+  --text-paragraph--line-height: 1.40;
+
+  --text-paragraph-list--line-height: 1.40;
+  
+  --text-link--line-height: 1.30;
+
+  /* Font mapping */
   --font-sans: var(--font-schibsted), "Schibsted Grotesk", sans-serif;
 }
 
+/* 3. Global Base Application */
 html,
 body {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-background-1);
+  color: var(--color-text-paragraph-1);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-hr {
-  border-color: var(--color-gray-700);
 }
