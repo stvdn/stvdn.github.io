@@ -16,9 +16,9 @@ export default function HomePage() {
 
       <div className="grid grid-cols-1 gap-12 md:grid-cols-[30%_1fr]">
         <Sidebar />
-        <main className="space-y-16">
-          <ScrollReveal>
-            <MouseFollower>
+        <MouseFollower>
+          <main className="space-y-16">
+            <ScrollReveal>
               <section className="mb-20">
                 <SectionHeading>Experience</SectionHeading>
                 <div>
@@ -32,27 +32,25 @@ export default function HomePage() {
                   ))}
                 </div>
               </section>
-            </MouseFollower>
-          </ScrollReveal>
+            </ScrollReveal>
 
-          <ScrollReveal>
-            <section className="mb-20">
-              <SectionHeading>Projects</SectionHeading>
-              <div>
-                {portfolioData.projects.map((project, index) => (
-                  <div key={index}>
-                    <ProjectEntry project={project} />
-                    {index < portfolioData.projects.length - 1 && (
-                      <hr className="border-t border-gray-700" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-          </ScrollReveal>
+            <ScrollReveal>
+              <section className="mb-20">
+                <SectionHeading>Projects</SectionHeading>
+                <div>
+                  {portfolioData.projects.map((project, index) => (
+                    <div key={index}>
+                      <ProjectEntry project={project} />
+                      {index < portfolioData.projects.length - 1 && (
+                        <hr className="border-t border-gray-700" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </ScrollReveal>
 
-          <ScrollReveal>
-            <MouseFollower>
+            <ScrollReveal>
               <section className="mb-20">
                 <h2 className="pt-7 pb-6 text-xs font-bold tracking-widest border-t border-divider">
                   Skills
@@ -74,72 +72,70 @@ export default function HomePage() {
                   ))}
                 </div>
               </section>
-            </MouseFollower>
-          </ScrollReveal>
+            </ScrollReveal>
 
-          <ScrollReveal>
-            <section className="mb-20">
-              <h2 className="pt-7 pb-10 text-xs font-bold tracking-widest border-t border-divider">
-                Education
-              </h2>
-              <div>
-                {portfolioData.education.map((edu, index) => (
-                  <div key={index}>
-                    <div className="grid grid-cols-1 gap-1 space-y-8 md:grid-cols-2">
-                      <div>
-                        <p className="text-sm font-bold text-white">
-                          {edu.university}
-                        </p>
-                        {edu.dateRange && (
-                          <p className="text-sm text-gray-500">{edu.dateRange}</p>
-                        )}
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-400">{edu.degree}</p>
-                        {edu.minor && (
-                          <p className="text-sm text-gray-500">{edu.minor}</p>
-                        )}
+            <ScrollReveal>
+              <section className="mb-20">
+                <h2 className="pt-7 pb-10 text-xs font-bold tracking-widest border-t border-divider">
+                  Education
+                </h2>
+                <div>
+                  {portfolioData.education.map((edu, index) => (
+                    <div key={index}>
+                      <div className="grid grid-cols-1 gap-1 space-y-8 md:grid-cols-2">
+                        <div>
+                          <p className="text-sm font-bold text-white">
+                            {edu.university}
+                          </p>
+                          {edu.dateRange && (
+                            <p className="text-sm text-gray-500">{edu.dateRange}</p>
+                          )}
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-400">{edu.degree}</p>
+                          {edu.minor && (
+                            <p className="text-sm text-gray-500">{edu.minor}</p>
+                          )}
+                        </div>
                       </div>
                     </div>
+                  ))}
+                </div>
+              </section>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <section className="mb-18">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+                  <div>
+                    <h2 className="pt-5 pb-8 text-xs font-bold tracking-widest border-t border-divider">
+                      Companies
+                    </h2>
+                    <CompaniesMarquee />
                   </div>
-                ))}
-              </div>
-            </section>
-          </ScrollReveal>
 
-          <ScrollReveal>
-            <section className="mb-18">
-              <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-                <div>
-                  <h2 className="pt-5 pb-8 text-xs font-bold tracking-widest border-t border-divider">
-                    Companies
-                  </h2>
-                  <CompaniesMarquee />
+                  <div>
+                    <h2 className="pt-5 pb-8 text-xs font-bold tracking-widest border-t border-divider">
+                      Certifications
+                    </h2>
+                    <ul className="space-y-1.5">
+                      {portfolioData.certifications.map((cert) => (
+                        <li key={cert} className="text-sm text-gray-400">
+                          {cert}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
+              </section>
+            </ScrollReveal>
 
-                <div>
-                  <h2 className="pt-5 pb-8 text-xs font-bold tracking-widest border-t border-divider">
-                    Certifications
-                  </h2>
-                  <ul className="space-y-1.5">
-                    {portfolioData.certifications.map((cert) => (
-                      <li key={cert} className="text-sm text-gray-400">
-                        {cert}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </section>
-          </ScrollReveal>
-
-          <hr className="border-t border-gray-700" />
-        </main>
+            <hr className="border-t border-gray-700" />
+          </main>
+        </MouseFollower>
       </div>
 
-      <MouseFollower>
-        <Footer />
-      </MouseFollower>
+      <Footer />
     </>
   );
 }
