@@ -22,29 +22,93 @@
   
   --color-text-paragraph-1: var(--color-white);
   --color-text-paragraph-2: var(--color-gray-400); 
-  --color-text-link: var(--color-white);
   --color-text-link-secondary: var(--color-black);
-  
-  --color-divider-1: var(--color-gray-800);
+   
+  --color-divider: var(--color-gray-700);
 
-  /* 2. Figma Text Styles (Size & Line Height) */
+  /* 2. Figma Text Styles */
+  --text-heading-1: 24px;
   --text-heading-1--line-height: 1.45;
-  
-  --text-heading-2--line-height: 1.30;
-  
-  --text-heading-3--line-height: 1.30;
-  
-  --text-paragraph--line-height: 1.40;
+  --text-heading-1--letter-spacing: -0.01em;
+  --text-heading-1--font-weight: 400;
 
+  --text-heading-2: 16px;
+  --text-heading-2--line-height: 1.30;
+  --text-heading-2--letter-spacing: -0.01em;
+  --text-heading-2--font-weight: 600;
+
+  --text-heading-3: 13px;
+  --text-heading-3--line-height: 1.30;
+  --text-heading-3--letter-spacing: -0.005em;
+  --text-heading-3--font-weight: 600;
+
+  --text-paragraph: 15px;
+  --text-paragraph--line-height: 1.40;
+  --text-paragraph--letter-spacing: -0.01em;
+  --text-paragraph--font-weight: 400;
+
+  --text-paragraph-list: 15px;
   --text-paragraph-list--line-height: 1.40;
-  
+  --text-paragraph-list--letter-spacing: -0.005em;
+  --text-paragraph-list--font-weight: 400;
+
+  --text-link: 24px;
   --text-link--line-height: 1.30;
+  --text-link--letter-spacing: -0.02em;
+  --text-link--font-weight: 600;
 
   /* Font mapping */
   --font-sans: var(--font-schibsted), "Schibsted Grotesk", sans-serif;
 }
 
-/* 3. Global Base Application */
+/* 3. Component Classes */
+@layer components {
+  .text-heading-1 {
+    font-size: var(--text-heading-1);
+    line-height: var(--text-heading-1--line-height);
+    letter-spacing: var(--text-heading-1--letter-spacing);
+    font-weight: var(--text-heading-1--font-weight);
+  }
+
+  .text-heading-2 {
+    font-size: var(--text-heading-2);
+    line-height: var(--text-heading-2--line-height);
+    letter-spacing: var(--text-heading-2--letter-spacing);
+    font-weight: var(--text-heading-2--font-weight);
+  }
+
+  .text-heading-3 {
+    font-size: var(--text-heading-3);
+    line-height: var(--text-heading-3--line-height);
+    letter-spacing: var(--text-heading-3--letter-spacing);
+    font-weight: var(--text-heading-3--font-weight);
+  }
+
+  .text-paragraph {
+    font-size: var(--text-paragraph);
+    line-height: var(--text-paragraph--line-height);
+    letter-spacing: var(--text-paragraph--letter-spacing);
+    font-weight: var(--text-paragraph--font-weight);
+    color: var(--color-text-paragraph-1);
+  }
+
+  .text-paragraph-list {
+    font-size: var(--text-paragraph-list);
+    line-height: var(--text-paragraph-list--line-height);
+    letter-spacing: var(--text-paragraph-list--letter-spacing);
+    font-weight: var(--text-paragraph-list--font-weight);
+  }
+
+  .text-link {
+    font-size: var(--text-link);
+    line-height: var(--text-link--line-height);
+    letter-spacing: var(--text-link--letter-spacing);
+    font-weight: var(--text-link--font-weight);
+    color: var(--color-white);
+  }
+}
+
+/* 4. Global Base Application */
 html,
 body {
   background-color: var(--color-background-1);

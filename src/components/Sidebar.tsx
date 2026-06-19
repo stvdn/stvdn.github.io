@@ -3,12 +3,11 @@ import { ContactLink } from "./ContactLink";
 
 export function Sidebar() {
   return (
-    <aside className="mb-10 md:mb-0 md:sticky md:top-8 md:self-start">
-      <p className="text-sm leading-relaxed text-white md:text-base">
+    <aside className="pt-8 border-t-1 border-divider md:sticky md:top-4 md:self-start">
+      <p className="text-paragraph text-sm md:text-base md:px-2 md:pr-16">
         {portfolioData.bio}
       </p>
-      <hr className="my-6 border-t border-gray-700" />
-      <div className="flex flex-col gap-2">
+      <div className="mt-18 flex flex-col gap-2">
         {portfolioData.contactLinks.map((link) => (
           <ContactLink key={link.label} label={link.label} href={link.href} />
         ))}

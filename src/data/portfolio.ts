@@ -6,7 +6,6 @@ export interface ContactLink {
 export interface JobEntry {
   title: string;
   company: string;
-  companyUrl: string;
   dateRange: string;
   location: string;
   bullets: string[];
@@ -20,11 +19,19 @@ export interface SkillCategory {
 export interface Education {
   university: string;
   degree: string;
+  dateRange?: string;
+  minor?: string;
 }
 
-export interface Recommendation {
-  quote: string;
-  attribution: string;
+export interface Company {
+  name: string;
+  logo: string;
+}
+
+export interface Project {
+  title: string;
+  description: string;
+  techTags?: string[];
 }
 
 export interface PortfolioData {
@@ -34,103 +41,132 @@ export interface PortfolioData {
   contactLinks: ContactLink[];
   experience: JobEntry[];
   skills: SkillCategory[];
-  education: Education;
-  recommendations: Recommendation[];
+  education: Education[];
+  projects: Project[];
+  companies: Company[];
   certifications: string[];
 }
 
 export const portfolioData: PortfolioData = {
   name: "Steven Peñafiel",
-  role: "Software Architect",
+  role: "Software Engineer",
   bio:
-    "Software architect with years of experience designing scalable systems and leading engineering teams. Passionate about clean architecture, developer experience, and building products that make a difference. Currently focused on distributed systems and cloud-native solutions.",
+    "Master's student in Systems Architecture Design with experience in web and mobile application development. Currently focused on automating processes and business rules, always learning cutting-edge technologies with the knowledge to apply them effectively.",
   contactLinks: [
-    { label: "hello@figma.com", href: "mailto:hello@figma.com" },
-    { label: "(555) 123-4567", href: "tel:+15551234567" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
+    { label: "stevendanny2000@gmail.com", href: "mailto:stevendanny2000@gmail.com" },
+    { label: "+593 958836085", href: "tel:+593958836085" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/stevendanny/" },
   ],
   experience: [
     {
-      title: "Senior Software Architect",
-      company: "Tech Corp",
-      companyUrl: "https://example.com",
-      dateRange: "June 2022 – Present",
-      location: "Remote & New York, NY",
-      bullets: [
-        "Led the architecture redesign of the core platform, reducing latency by 40% and improving system throughput by 3x",
-        "Designed and implemented a microservices migration strategy moving from a monolith to 12 independent services",
-        "Established architectural review processes and technical standards across 4 engineering teams",
-        "Directed the adoption of event-driven architecture for real-time data processing pipelines",
-      ],
-    },
-    {
-      title: "Senior Software Engineer",
-      company: "Dev Studios",
-      companyUrl: "https://example.com",
-      dateRange: "December 2021 – June 2022",
-      location: "New York, NY",
-      bullets: [
-        "Built a high-traffic API gateway handling 10M+ requests per day with 99.99% availability",
-        "Mentored a team of 6 engineers on best practices for distributed systems design",
-        "Implemented observability solutions reducing mean time to detection from hours to minutes",
-      ],
-    },
-    {
       title: "Software Engineer",
-      company: "Code Hub",
-      companyUrl: "https://example.com",
-      dateRange: "October 2016 – March 2018",
-      location: "Los Angeles, CA",
+      company: "Redsis",
+      dateRange: "December 2022 – Present",
+      location: "Remote",
       bullets: [
-        "Developed full-stack features for a SaaS platform serving 50K+ active users",
-        "Optimized database queries reducing page load times by 60%",
-        "Contributed to the open-source component library used across 3 product teams",
+        "Currently refactoring the core migration engine into a tool-agnostic framework using PowerShell, enabling multi-source migrations from diverse enterprise orchestrators while increasing code reusability and reducing technical debt.",
+        "Automated the migration of 5,600+ business processes to a modern orchestrator (JAMS), eliminating legacy errors and improving system modularity.",
+        "Designed and developed Python ETL solutions to synchronize data between SQL Server databases and REST APIs, ensuring data consistency across platforms.",
+        "Architected real-time resource validation (CPU/RAM) using PowerShell and WinRM for remote execution of enterprise packages.",
+        "Reduced manual operational errors by 80% by integrating custom business logic into JAMS using Python and PowerShell.",
+        "Engineered unified automation for Azure Data Factory, AWS Glue, and AWS Lambda, providing centralized monitoring and detailed logging.",
+      ],
+    },
+    {
+      title: "Full Stack Web Developer",
+      company: "WebCoop",
+      dateRange: "May 2022 – December 2022",
+      location: "Quito, Ecuador",
+      bullets: [
+        "Collaborated with banking stakeholders to design and build a Treasury Module integrated into the core banking system using PHP/Laravel and MySQL.",
+        "Developed an automated reporting system via WhatsApp REST API, enhancing real-time communication of financial data.",
+        "Built complex CRUD operations with advanced filtering and pagination to improve internal navigation and user efficiency.",
+      ],
+    },
+    {
+      title: "Mobile and Web Developer",
+      company: "Hausi",
+      dateRange: "February 2022 – May 2022",
+      location: "Quito, Ecuador",
+      bullets: [
+        "Automated customer data extraction, cleansing, and transformation from the company's CRM into Firestore using Make, ensuring data integrity for sales workflows.",
+        "Built a property management mobile app from scratch using Flask and Firebase, implementing complex search filters and state management.",
+        "Built a loan calculator for the website using JavaScript, HTML, and CSS, with formulas adapted to Ecuadorian bank interest rates.",
+      ],
+    },
+    {
+      title: "Full Stack Web Developer",
+      company: "Marcairis",
+      dateRange: "January 2021 – January 2022",
+      location: "Remote",
+      bullets: [
+        "Implemented multi-method authentication (Google, OTP, OAuth) and Role-Based Access Control (RBAC) to manage complex permissions between vendors and regular users.",
+        "Engineered Backend APIs using PHP (Laravel) to automate metadata generation for SEO, significantly increasing platform visibility and social sharing efficiency.",
+        "Developed Internal Reporting Tools to generate and automate the delivery of purchase invoices and financial reports in PDF/Excel formats via email.",
+        "Collaborated on the Frontend Migration from Angular to Ionic, ensuring a unified codebase for multi-platform (web and mobile) deployment.",
       ],
     },
   ],
   skills: [
     {
-      title: "System Design",
-      skills: [
-        "Architecture Design",
-        "Scalability Planning",
-        "Technology Selection",
-        "Performance Optimization",
-      ],
+      title: "Languages",
+      skills: ["Python", "JavaScript", "TypeScript", "PowerShell", "PHP", "Dart", "C#/.NET"],
     },
     {
-      title: "Technical Leadership",
-      skills: [
-        "Team Mentoring",
-        "Code Review",
-        "Technical Strategy",
-        "Cross-team Collaboration",
-      ],
+      title: "Frameworks & Automation",
+      skills: ["React / Next.js", "Angular", "Laravel", "Flask / FastAPI", "AI Agents & LLM Integration", "JAMS / GoAnyWhere"],
     },
     {
-      title: "Development",
-      skills: [
-        "Full-stack Development",
-        "API Design",
-        "Database Design",
-        "Cloud Infrastructure",
-      ],
+      title: "Technologies & Practices",
+      skills: ["Docker", "AWS", "SQL & NoSQL", "Git", "OOP & SOLID Principles", "Solution Architecture", "Workflow Automation"],
     },
   ],
-  education: {
-    university: "Instituto Tecnológico de Costa Rica",
-    degree: "Bachelor of Science in Computer Engineering",
-  },
-  recommendations: [
+  education: [
     {
-      quote:
-        "Steven is one of those rare architects who combines deep technical expertise with genuine empathy for the engineers implementing his designs. His system proposals are always well-reasoned, thoroughly documented, and a joy to work with.",
-      attribution: "Sarah Mitchell, VP of Engineering at Tech Corp",
+      university: "Universidad Politécnica Salesiana, Ecuador",
+      degree: "Master in Software Engineering – Mention in Systems Architecture Design",
+      dateRange: "Expected 2027",
     },
+    {
+      university: "Pontificia Universidad Católica, Ecuador",
+      degree: "Bachelor's Degree in Information Systems Engineering",
+      dateRange: "2018–2022",
+    },
+  ],
+  projects: [
+    {
+      title: "Ventario",
+      description:
+        "SaaS platform for inventory and sales management built with Next.js and React, featuring autonomous AI Agents to automate data entry and generate real-time business insights. Orchestrated with Docker-compose and deployed using Dokploy to ensure robust environment management and high-performance synchronization.",
+      techTags: ["Next.js", "React", "AI Agents", "Docker", "Dokploy"],
+    },
+    {
+      title: "React Portfolio",
+      description:
+        "Personal portfolio built with React, Vite, and TypeScript, styled with Tailwind CSS, featuring 3D models (Spline) and smooth animations via Framer Motion. Deployed on GitHub Pages with CI/CD using GitHub Actions.",
+      techTags: ["React", "TypeScript", "Tailwind CSS", "Spline", "Framer Motion"],
+    },
+    {
+      title: "Video to MP3 Converter",
+      description:
+        "Console application built to practice microservices architecture, featuring modular services using Python, Docker, RabbitMQ, and MariaDB.",
+      techTags: ["Python", "Docker", "RabbitMQ", "MariaDB"],
+    },
+    {
+      title: "Travel Planner",
+      description:
+        "Trip planning app built with Next.js, TypeScript, and Tailwind CSS, using PostgreSQL (Supabase) and Prisma. Features authentication, itinerary management, and a 3D globe visualization.",
+      techTags: ["Next.js", "TypeScript", "PostgreSQL", "Supabase", "Prisma"],
+    },
+  ],
+  companies: [
+    { name: "Redsis", logo: "/companies/redsis.webp" },
+    { name: "WebCoop", logo: "/companies/webcoop.webp" },
+    { name: "Hausi", logo: "/companies/hausi.webp" },
+    { name: "Marcairis", logo: "/companies/marcairis.webp" },
   ],
   certifications: [
-    "AWS Solutions Architect – Professional",
-    "Google Cloud Professional Cloud Architect",
-    "Certified Kubernetes Administrator (CKA)",
+    "SOLID Programming Principles – LinkedIn Learning, Online",
+    "Docker Foundations Professional Certificate – LinkedIn Learning, Online",
   ],
 };
