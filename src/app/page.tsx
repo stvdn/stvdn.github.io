@@ -12,7 +12,7 @@ import { MouseFollower } from "@/components/MouseFollower";
 export default function HomePage() {
   return (
     <>
-      <Header />
+      <Header navLink={{ href: "/blog", label: "Blog" }} />
 
       <div className="grid grid-cols-1 gap-12 md:grid-cols-[30%_1fr]">
         <Sidebar />

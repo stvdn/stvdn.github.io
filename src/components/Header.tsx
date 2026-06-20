@@ -3,7 +3,7 @@ import { portfolioData } from "@/data/portfolio";
 import { MouseFollower } from "@/components/MouseFollower";
 import { StaggerReveal } from "@/components/StaggerReveal";
 
-export function Header() {
+export function Header({ navLink }: { navLink: { href: string; label: string } }) {
   return (
     <header>
       <MouseFollower>
@@ -22,10 +22,10 @@ export function Header() {
           </div>
           <StaggerReveal index={2}>
             <Link
-              href="/about"
+              href={navLink.href}
               className="group relative text-link text-lg md:text-xl lg:text-2xl"
             >
-              About
+              {navLink.label}
               <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 bg-white transition-all duration-300 group-hover:left-0 group-hover:w-full" />
             </Link>
           </StaggerReveal>
