@@ -1,1 +1,3 @@
-always use pnpm
+ALWAYS:
+use pnpm
+do atommic GIT commits
