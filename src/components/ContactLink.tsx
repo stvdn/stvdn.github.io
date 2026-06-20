@@ -9,7 +9,7 @@ export function ContactLink({ label, href }: ContactLinkProps) {
       href={href}
       target={href.startsWith("http") ? "_blank" : undefined}
       rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="group border-t border-divider p-2 m inline-flex items-center gap-1 text-xs text-white transition-colors hover:text-gray-300"
+      className="group border-t border-divider px-2 py-4 m inline-flex items-center gap-1 text-xs text-white transition-colors hover:text-gray-300"
     >
       <span className="relative">
         {label}
