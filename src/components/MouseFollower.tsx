@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 
 interface Particle {
@@ -9,6 +9,8 @@ interface Particle {
   y: number;
   angle: number;
   scale: number;
+  driftX: number;
+  driftY: number;
 }
 
 export function MouseFollower({ children }: { children: React.ReactNode }) {
@@ -38,9 +40,11 @@ export function MouseFollower({ children }: { children: React.ReactNode }) {
     const id = nextId.current++;
     const angle = Math.random() * Math.PI * 2;
     const scale = 0.5 + Math.random() * 0.8;
+    const driftX = Math.cos(angle) * (20 + Math.random() * 30);
+    const driftY = Math.sin(angle) * (20 + Math.random() * 30);
 
     setParticles((prev) => {
-      const next = [...prev, { id, x, y, angle, scale }];
+      const next = [...prev, { id, x, y, angle, scale, driftX, driftY }];
       return next.length > 25 ? next.slice(-25) : next;
     });
 
@@ -92,8 +96,8 @@ export function MouseFollower({ children }: { children: React.ReactNode }) {
           animate={{
             opacity: 0,
             scale: 0,
-            x: Math.cos(p.angle) * (20 + Math.random() * 30),
-            y: Math.sin(p.angle) * (20 + Math.random() * 30),
+            x: p.driftX,
+            y: p.driftY,
           }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
