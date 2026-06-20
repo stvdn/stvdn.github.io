@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Schibsted_Grotesk } from "next/font/google";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import "./globals.css";
 
 const schibstedGrotesk = Schibsted_Grotesk({ 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <div className="mx-auto max-w-7xl px-8 py-8 md:pt-16">
           {children}
         </div>
+        <ScrollToTop />
       </body>
     </html>
   );
