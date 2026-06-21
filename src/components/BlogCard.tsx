@@ -1,13 +1,24 @@
 import Link from "next/link";
 import type { BlogPost } from "@/data/blog";
+import type { Locale } from "@/i18n/config";
 
-export function BlogCard({ post }: { post: BlogPost }) {
+interface BlogCardProps {
+  post: BlogPost;
+  locale: Locale;
+}
+
+const dateLocale: Record<Locale, string> = {
+  en: "en-US",
+  es: "es-ES",
+};
+
+export function BlogCard({ post, locale }: BlogCardProps) {
   return (
-    <Link href={`/blog/${post.slug}`} className="group block">
+    <Link href={`/${locale}/blog/${post.slug}`} className="group block">
       <article className="border-t border-divider pt-6 pb-8">
         <div className="flex items-center gap-3 mb-3">
           <time className="text-xs text-gray-500 tracking-wide" dateTime={post.date}>
-            {new Date(post.date).toLocaleDateString("en-US", {
+            {new Date(post.date).toLocaleDateString(dateLocale[locale], {
               year: "numeric",
               month: "long",
               day: "numeric",

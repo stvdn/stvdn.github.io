@@ -1,11 +1,15 @@
 "use client";
 
 import { motion } from "motion/react";
-import { portfolioData } from "@/data/portfolio";
 import Image from "next/image";
+import type { Company } from "@/data/portfolio";
 
-export function CompaniesMarquee() {
-  const doubled = [...portfolioData.companies, ...portfolioData.companies];
+interface CompaniesMarqueeProps {
+  companies: Company[];
+}
+
+export function CompaniesMarquee({ companies }: CompaniesMarqueeProps) {
+  const doubled = [...companies, ...companies];
 
   return (
     <div className="overflow-hidden">
