@@ -7,7 +7,9 @@ export interface BlogPost {
   content: string;
 }
 
-export const blogPosts: BlogPost[] = [
+export const blogPosts: BlogPost[] = [];
+
+export const blogPosts2: BlogPost[] = [
   {
     slug: "building-scalable-automation-with-powershell",
     title: "Building Scalable Automation with PowerShell",

@@ -20,9 +20,19 @@ export default function BlogPage() {
               <section>
                 <SectionHeading>Blog</SectionHeading>
                 <div>
-                  {blogPosts.map((post) => (
-                    <BlogCard key={post.slug} post={post} />
-                  ))}
+                  {blogPosts.length > 0 ? (
+                    blogPosts.map((post) => (
+                      <BlogCard key={post.slug} post={post} />
+                    ))
+                  ) : (
+                    <div className="py-12">
+                      <p className="text-sm text-gray-400 mb-2">No posts yet.</p>
+                      <p className="text-xs text-gray-500">
+                        I'm working on some pieces about automation, AI agents,
+                        and building for production. Check back soon.
+                      </p>
+                    </div>
+                  )}
                 </div>
               </section>
             </ScrollReveal>
