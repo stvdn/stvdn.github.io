@@ -1,6 +1,7 @@
 export interface ContactLink {
   label: string;
   href: string;
+  copyValue?: string;
 }
 
 export interface JobEntry {
