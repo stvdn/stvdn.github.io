@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Globe } from "lucide-react";
 import { locales, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
@@ -23,19 +24,32 @@ export function LanguageSwitcher({
   dictionary: Dictionary;
 }) {
   const pathname = usePathname();
-  const target: Locale = current === "en" ? "es" : "en";
 
   return (
-    <Link
-      href={getAlternatePath(pathname, target)}
-      className="group relative text-link text-lg md:text-xl lg:text-2xl"
-      aria-label={`Switch to ${target === "en" ? "English" : "Spanish"}`}
-    >
-      <span className="text-white">{dictionary.language[current]}</span>
-      <span className="text-gray-500 mx-1">/</span>
-      <span className="text-gray-500 group-hover:text-white transition-colors">
-        {dictionary.language[target]}
-      </span>
-    </Link>
+    <div className="flex items-center gap-2">
+      <Globe size={20} className="shrink-0" aria-hidden="true" />
+      <Link
+        href={getAlternatePath(pathname, "en")}
+        aria-label="Switch to English"
+        className={`text-xs font-medium transition-colors ${
+          current === "en"
+            ? "text-white"
+            : "text-gray-500 hover:text-white"
+        }`}
+      >
+        {dictionary.language.en}
+      </Link>
+      <Link
+        href={getAlternatePath(pathname, "es")}
+        aria-label="Switch to Spanish"
+        className={`text-xs font-medium transition-colors ${
+          current === "es"
+            ? "text-white"
+            : "text-gray-500 hover:text-white"
+        }`}
+      >
+        {dictionary.language.es}
+      </Link>
+    </div>
   );
 }
