@@ -11,9 +11,10 @@ interface HeaderProps {
   locale: Locale;
   dictionary: Dictionary;
   navLink: { href: string; label: string };
+  showLanguageSwitcher?: boolean;
 }
 
-export function Header({ name, role, locale, dictionary, navLink }: HeaderProps) {
+export function Header({ name, role, locale, dictionary, navLink, showLanguageSwitcher = true }: HeaderProps) {
   return (
     <header>
       <MouseFollower>
@@ -31,9 +32,11 @@ export function Header({ name, role, locale, dictionary, navLink }: HeaderProps)
             </StaggerReveal>
           </div>
           <div className="flex items-center gap-6">
-            <StaggerReveal index={2}>
-              <LanguageSwitcher current={locale} dictionary={dictionary} />
-            </StaggerReveal>
+            {showLanguageSwitcher && (
+              <StaggerReveal index={2}>
+                <LanguageSwitcher current={locale} dictionary={dictionary} />
+              </StaggerReveal>
+            )}
             <StaggerReveal index={3}>
               <Link
                 href={navLink.href}

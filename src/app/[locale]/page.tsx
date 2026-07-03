@@ -159,7 +159,10 @@ export default async function HomePage({ params }: PageProps) {
         </MouseFollower>
       </div>
 
-      <Footer label={dictionary.footer.contact} />
+      <Footer
+        label={dictionary.footer.contact}
+        mailtoHref={portfolio.contactLinks.find((c) => c.href.startsWith("mailto:"))?.href ?? "#"}
+      />
     </>
   );
 }
