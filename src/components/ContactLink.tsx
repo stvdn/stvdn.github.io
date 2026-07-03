@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { Clipboard, ClipboardCheck } from "lucide-react";
 
 interface ContactLinkProps {
   label: string;
@@ -51,14 +52,15 @@ export function ContactLink({ label, href, copyValue }: ContactLinkProps) {
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.span
-            key={copied ? "check" : "arrow"}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
+            key={copied ? "copied" : "clipboard"}
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.6 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
             aria-hidden="true"
+            className="inline-flex"
           >
-            {copied ? "✓" : "↗"}
+            {copied ? <ClipboardCheck size={14} /> : <Clipboard size={14} />}
           </motion.span>
         </AnimatePresence>
       </button>
