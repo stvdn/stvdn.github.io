@@ -6,9 +6,9 @@ export const portfolioEn: PortfolioData = {
   bio:
     "Master's student in Systems Architecture Design with experience in web and mobile application development. Currently focused on automating processes and business rules, always learning cutting-edge technologies with the knowledge to apply them effectively.",
   contactLinks: [
-    { label: "stevendanny2000@gmail.com", href: "mailto:stevendanny2000@gmail.com" },
-    { label: "+593 958836085", href: "tel:+593958836085" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/stevendanny/" },
+    { label: "stevendanny2000@gmail.com", href: "mailto:stevendanny2000@gmail.com", copyValue: "stevendanny2000@gmail.com" },
+    { label: "+593 958836085", href: "tel:+593958836085", copyValue: "+593958836085" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/stevendanny/", copyValue: "https://www.linkedin.com/in/stevendanny/" },
   ],
   experience: [
     {

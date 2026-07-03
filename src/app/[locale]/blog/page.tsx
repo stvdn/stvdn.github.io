@@ -35,6 +35,7 @@ export default async function BlogPage({ params }: PageProps) {
         locale={typedLocale}
         dictionary={dictionary}
         navLink={{ href: `/${typedLocale}`, label: dictionary.nav.about }}
+        showLanguageSwitcher={false}
       />
 
       <div className="grid grid-cols-1 gap-12 md:grid-cols-[30%_1fr]">
@@ -72,7 +73,10 @@ export default async function BlogPage({ params }: PageProps) {
         </MouseFollower>
       </div>
 
-      <Footer label={dictionary.footer.contact} />
+      <Footer
+        label={dictionary.footer.contact}
+        mailtoHref={portfolio.contactLinks.find((c) => c.href.startsWith("mailto:"))?.href ?? "#"}
+      />
     </>
   );
 }

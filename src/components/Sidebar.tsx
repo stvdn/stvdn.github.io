@@ -13,7 +13,7 @@ export function Sidebar({ portfolio }: SidebarProps) {
       </p>
       <div className="mt-18 flex flex-col gap-2">
         {portfolio.contactLinks.map((link) => (
-          <ContactLink key={link.label} label={link.label} href={link.href} />
+          <ContactLink key={link.label} label={link.label} href={link.href} copyValue={link.copyValue} />
         ))}
       </div>
     </aside>
