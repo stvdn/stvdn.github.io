@@ -16,6 +16,22 @@ export const dictionary: Dictionary = {
   footer: {
     contact: "Contáctame",
   },
+  contact: {
+    title: "Trabajemos juntos",
+    nameLabel: "Nombre",
+    namePlaceholder: "Tu nombre",
+    emailLabel: "Correo",
+    emailPlaceholder: "tu@ejemplo.com",
+    subjectLabel: "Asunto",
+    subjectPlaceholder: "Oferta de trabajo, proyecto, etc.",
+    messageLabel: "Mensaje",
+    messagePlaceholder: "Cuéntame sobre ello...",
+    submit: "Enviar mensaje",
+    submitting: "Enviando...",
+    success: "¡Gracias! Tu mensaje ha sido enviado.",
+    error: "Algo salió mal. Inténtalo de nuevo o escríbeme directamente.",
+    close: "Cerrar",
+  },
   blog: {
     title: "Blog",
     emptyTitle: "Aún no hay publicaciones.",
