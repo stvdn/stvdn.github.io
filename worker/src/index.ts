@@ -14,19 +14,24 @@ const MAX_LEN: Record<string, number> = {
   message: 5000,
 };
 
-function corsHeaders(env: Env): Record<string, string> {
-  return {
-    "Access-Control-Allow-Origin": env.ALLOWED_ORIGIN || "*",
+function corsHeaders(req: Request, env: Env): Record<string, string> {
+  const allowed = (env.ALLOWED_ORIGIN || "*").split(",").map((o) => o.trim());
+  const origin = req.headers.get("Origin") ?? "";
+  const allowAll = allowed.includes("*");
+  const allowedOrigin = allowAll ? "*" : allowed.includes(origin) ? origin : "";
+  const headers: Record<string, string> = {
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
     Vary: "Origin",
   };
+  if (allowedOrigin) headers["Access-Control-Allow-Origin"] = allowedOrigin;
+  return headers;
 }
 
-function json(body: unknown, status: number, env: Env): Response {
+function json(body: unknown, status: number, req: Request, env: Env): Response {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { "Content-Type": "application/json", ...corsHeaders(env) },
+    headers: { "Content-Type": "application/json", ...corsHeaders(req, env) },
   });
 }
 
@@ -41,22 +46,22 @@ interface Payload {
 const worker = {
   async fetch(req: Request, env: Env): Promise<Response> {
     if (req.method === "OPTIONS") {
-      return new Response(null, { status: 204, headers: corsHeaders(env) });
+      return new Response(null, { status: 204, headers: corsHeaders(req, env) });
     }
 
     if (req.method !== "POST") {
-      return json({ error: "Method not allowed" }, 405, env);
+      return json({ error: "Method not allowed" }, 405, req, env);
     }
 
     let payload: Payload;
     try {
       payload = (await req.json()) as Payload;
     } catch {
-      return json({ error: "Invalid JSON" }, 400, env);
+      return json({ error: "Invalid JSON" }, 400, req, env);
     }
 
     if (payload.website) {
-      return json({ ok: true }, 200, env);
+      return json({ ok: true }, 200, req, env);
     }
 
     const name = String(payload.name ?? "").trim();
@@ -71,11 +76,11 @@ const worker = {
     if (message.length < 1 || message.length > MAX_LEN.message) errors.message = "invalid";
 
     if (Object.keys(errors).length > 0) {
-      return json({ error: "validation", fields: errors }, 422, env);
+      return json({ error: "validation", fields: errors }, 422, req, env);
     }
 
     if (!env.RESEND_API_KEY || !env.CONTACT_TO_EMAIL || !env.FROM_EMAIL) {
-      return json({ error: "Server not configured" }, 500, env);
+      return json({ error: "Server not configured" }, 500, req, env);
     }
 
     const html = [
@@ -104,10 +109,10 @@ const worker = {
 
     if (!resendRes.ok) {
       const text = await resendRes.text();
-      return json({ error: "Email provider error", detail: text }, 502, env);
+      return json({ error: "Email provider error", detail: text }, 502, req, env);
     }
 
-    return json({ ok: true }, 200, env);
+    return json({ ok: true }, 200, req, env);
   },
 };
 

@@ -6,6 +6,6 @@
   "vars": {
     "CONTACT_TO_EMAIL": "stevendanny2000@gmail.com",
     "FROM_EMAIL": "noreply@usaventario.com",
-    "ALLOWED_ORIGIN": "https://stvdn.github.io"
+    "ALLOWED_ORIGIN": "https://stvdn.github.io,http://localhost:3000"
   }
 }
