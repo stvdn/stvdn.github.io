@@ -12,6 +12,11 @@ export interface ContactModalStrings {
   subjectPlaceholder: string;
   messageLabel: string;
   messagePlaceholder: string;
+  attachLabel: string;
+  attachHint: string;
+  attachError: string;
+  attachRemove: string;
+  attachDrop: string;
   submit: string;
   submitting: string;
   success: string;
