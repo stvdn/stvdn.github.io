@@ -162,6 +162,8 @@ export default async function HomePage({ params }: PageProps) {
       <Footer
         label={dictionary.footer.contact}
         mailtoHref={portfolio.contactLinks.find((c) => c.href.startsWith("mailto:"))?.href ?? "#"}
+        contactApiUrl={process.env.NEXT_PUBLIC_CONTACT_API_URL}
+        strings={dictionary.contact}
       />
     </>
   );

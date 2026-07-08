@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio-contact",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-01-01",
+  "vars": {
+    "CONTACT_TO_EMAIL": "stevendanny2000@gmail.com",
+    "FROM_EMAIL": "noreply@usaventario.com",
+    "ALLOWED_ORIGIN": "https://stvdn.github.io"
+  }
+}
