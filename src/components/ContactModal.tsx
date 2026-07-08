@@ -3,7 +3,7 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
-import { AlertCircle, CheckCircle2, Loader2, X } from "lucide-react";
+import { AlertCircle, CheckCircle2, FileText, Loader2, Upload, X } from "lucide-react";
 import type { ContactModalStrings } from "@/i18n/dictionaries";
 
 interface ContactModalProps {
@@ -16,15 +16,55 @@ interface ContactModalProps {
 type Status = "idle" | "submitting" | "success" | "error";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const ALLOWED_EXTENSIONS = ["pdf", "doc", "docx", "txt", "png", "jpg", "jpeg", "gif", "webp", "zip"];
+
+interface SelectedFile {
+  filename: string;
+  contentType: string;
+  content: string;
+  size: number;
+}
+
+function validateFile(file: File): string | null {
+  const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
+  if (!ALLOWED_EXTENSIONS.includes(ext)) return "type";
+  if (file.size > MAX_FILE_SIZE) return "size";
+  return null;
+}
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      const base64 = result.split(",")[1] ?? "";
+      resolve(base64);
+    };
+    reader.onerror = () => reject(new Error("read failed"));
+    reader.readAsDataURL(file);
+  });
+}
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
 
 export function ContactModal({ open, onClose, apiUrl, strings }: ContactModalProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [fileError, setFileError] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<SelectedFile | null>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleClose = useCallback(() => {
     setStatus("idle");
     setErrors({});
+    setFileError(false);
+    setSelectedFile(null);
     onClose();
   }, [onClose]);
 
@@ -59,6 +99,36 @@ export function ContactModal({ open, onClose, apiUrl, strings }: ContactModalPro
     return Object.keys(next).length === 0;
   };
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.currentTarget.files?.[0];
+    if (!file) return;
+    const err = validateFile(file);
+    if (err) {
+      setFileError(true);
+      setSelectedFile(null);
+      e.currentTarget.value = "";
+      return;
+    }
+    setFileError(false);
+    try {
+      const base64 = await fileToBase64(file);
+      setSelectedFile({
+        filename: file.name,
+        contentType: file.type || "application/octet-stream",
+        content: base64,
+        size: file.size,
+      });
+    } catch {
+      setFileError(true);
+    }
+  };
+
+  const handleRemoveFile = () => {
+    setSelectedFile(null);
+    setFileError(false);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -69,19 +139,28 @@ export function ContactModal({ open, onClose, apiUrl, strings }: ContactModalPro
 
     setStatus("submitting");
     try {
+      const body: Record<string, unknown> = {
+        name: String(data.get("name")).trim(),
+        email: String(data.get("email")).trim(),
+        subject: String(data.get("subject")).trim(),
+        message: String(data.get("message")).trim(),
+      };
+      if (selectedFile) {
+        body.attachment = {
+          filename: selectedFile.filename,
+          content: selectedFile.content,
+          contentType: selectedFile.contentType,
+        };
+      }
       const res = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: String(data.get("name")).trim(),
-          email: String(data.get("email")).trim(),
-          subject: String(data.get("subject")).trim(),
-          message: String(data.get("message")).trim(),
-        }),
+        body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");
       form.reset();
+      handleRemoveFile();
     } catch {
       setStatus("error");
     }
@@ -172,6 +251,56 @@ export function ContactModal({ open, onClose, apiUrl, strings }: ContactModalPro
                       errors.message ? "border-red-500 focus:ring-red-500" : "border-divider focus:ring-white"
                     }`}
                   />
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-gray-400">
+                    {strings.attachLabel}
+                  </label>
+                  {selectedFile ? (
+                    <div className="flex items-center gap-2 border border-divider bg-black/40 px-3 py-2.5">
+                      <FileText size={16} className="shrink-0 text-gray-400" />
+                      <span className="flex-1 truncate text-sm text-white">
+                        {selectedFile.filename}
+                      </span>
+                      <span className="shrink-0 text-xs text-gray-500">
+                        {formatBytes(selectedFile.size)}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={handleRemoveFile}
+                        aria-label={strings.attachRemove}
+                        className="shrink-0 text-gray-500 transition-colors hover:text-white"
+                      >
+                        <X size={16} />
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className={`flex w-full items-center gap-2 border border-dashed px-3 py-2.5 text-sm text-gray-500 transition-colors hover:text-white ${
+                        fileError ? "border-red-500" : "border-divider hover:border-white"
+                      }`}
+                    >
+                      <Upload size={16} className="shrink-0" />
+                      <span>{strings.attachDrop}</span>
+                    </button>
+                  )}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    name="attachment"
+                    onChange={handleFileChange}
+                    accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg,.gif,.webp,.zip"
+                    className="hidden"
+                  />
+                  {fileError && (
+                    <p className="mt-1.5 text-xs text-red-400">{strings.attachError}</p>
+                  )}
+                  {!fileError && !selectedFile && (
+                    <p className="mt-1.5 text-xs text-gray-600">{strings.attachHint}</p>
+                  )}
                 </div>
 
                 <input
