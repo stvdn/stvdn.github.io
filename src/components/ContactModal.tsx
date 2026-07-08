@@ -91,7 +91,7 @@ export function ContactModal({ open, onClose, apiUrl, strings }: ContactModalPro
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -106,7 +106,7 @@ export function ContactModal({ open, onClose, apiUrl, strings }: ContactModalPro
             role="dialog"
             aria-modal="true"
             aria-label={strings.title}
-            className="relative w-full max-w-lg border border-divider bg-[#0a0a0a] p-6 shadow-2xl sm:p-8"
+            className="relative w-full max-w-lg max-h-[90dvh] overflow-y-auto overscroll-contain border border-divider bg-[#0a0a0a] p-4 shadow-2xl sm:p-6 md:p-8"
             initial={{ opacity: 0, scale: 0.96, y: 8 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 8 }}
@@ -116,16 +116,16 @@ export function ContactModal({ open, onClose, apiUrl, strings }: ContactModalPro
               type="button"
               onClick={handleClose}
               aria-label={strings.close}
-              className="absolute right-4 top-4 text-gray-500 transition-colors hover:text-white"
+              className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center text-gray-500 transition-colors hover:text-white sm:right-4 sm:top-4"
             >
               <X size={20} />
             </button>
 
-            <h2 className="mb-6 text-lg font-bold text-white">{strings.title}</h2>
+            <h2 className="mb-5 text-base font-bold text-white sm:mb-6 sm:text-lg">{strings.title}</h2>
 
             {status === "success" ? (
-              <div className="flex flex-col items-center gap-4 py-8 text-center">
-                <CheckCircle2 size={40} className="text-green-500" />
+              <div className="flex flex-col items-center gap-4 py-6 text-center sm:py-8">
+                <CheckCircle2 className="size-8 text-green-500 sm:size-10" />
                 <p className="text-sm text-gray-300">{strings.success}</p>
                 <button
                   type="button"
@@ -136,8 +136,8 @@ export function ContactModal({ open, onClose, apiUrl, strings }: ContactModalPro
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="space-y-4">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <form onSubmit={handleSubmit} noValidate className="space-y-4 sm:space-y-5">
+                <div className="grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2">
                   <Field
                     label={strings.nameLabel}
                     name="name"
@@ -168,7 +168,7 @@ export function ContactModal({ open, onClose, apiUrl, strings }: ContactModalPro
                     rows={5}
                     required
                     placeholder={strings.messagePlaceholder}
-                    className={`w-full resize-none border bg-black/40 px-3 py-2 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:ring-1 ${
+                    className={`w-full min-h-[120px] resize-none border bg-black/40 px-3 py-2 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:ring-1 ${
                       errors.message ? "border-red-500 focus:ring-red-500" : "border-divider focus:ring-white"
                     }`}
                   />
@@ -193,7 +193,7 @@ export function ContactModal({ open, onClose, apiUrl, strings }: ContactModalPro
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="flex w-full items-center justify-center gap-2 bg-white px-4 py-3 text-sm font-bold text-black transition-opacity disabled:opacity-60"
+                  className="flex w-full items-center justify-center gap-2 bg-white px-4 py-3 text-sm font-bold text-black transition-opacity disabled:opacity-60 sm:py-3.5"
                 >
                   {status === "submitting" && <Loader2 size={16} className="animate-spin" />}
                   {status === "submitting" ? strings.submitting : strings.submit}
