@@ -14,6 +14,9 @@ const MAX_LEN: Record<string, number> = {
   message: 5000,
 };
 
+const MAX_ATTACHMENT_SIZE = 10 * 1024 * 1024;
+const ALLOWED_EXTENSIONS = ["pdf", "doc", "docx", "txt", "png", "jpg", "jpeg", "gif", "webp", "zip"];
+
 function corsHeaders(req: Request, env: Env): Record<string, string> {
   const allowed = (env.ALLOWED_ORIGIN || "*").split(",").map((o) => o.trim());
   const origin = req.headers.get("Origin") ?? "";
@@ -35,12 +38,19 @@ function json(body: unknown, status: number, req: Request, env: Env): Response {
   });
 }
 
+interface Attachment {
+  filename?: unknown;
+  content?: unknown;
+  contentType?: unknown;
+}
+
 interface Payload {
   name?: unknown;
   email?: unknown;
   subject?: unknown;
   message?: unknown;
   website?: unknown;
+  attachment?: Attachment;
 }
 
 const worker = {
@@ -79,6 +89,23 @@ const worker = {
       return json({ error: "validation", fields: errors }, 422, req, env);
     }
 
+    let attachment: { filename: string; content: string; contentType: string } | null = null;
+    if (payload.attachment) {
+      const att = payload.attachment;
+      const filename = String(att.filename ?? "").trim();
+      const content = String(att.content ?? "");
+      const contentType = String(att.contentType ?? "application/octet-stream");
+
+      const ext = filename.split(".").pop()?.toLowerCase() ?? "";
+      if (!ALLOWED_EXTENSIONS.includes(ext)) {
+        return json({ error: "validation", fields: { attachment: "type" } }, 422, req, env);
+      }
+      if (content.length > MAX_ATTACHMENT_SIZE * 1.37) {
+        return json({ error: "validation", fields: { attachment: "size" } }, 422, req, env);
+      }
+      attachment = { filename, content, contentType };
+    }
+
     if (!env.RESEND_API_KEY || !env.CONTACT_TO_EMAIL || !env.FROM_EMAIL) {
       return json({ error: "Server not configured" }, 500, req, env);
     }
@@ -91,20 +118,32 @@ const worker = {
       `<p><strong>Message:</strong></p><pre style="white-space:pre-wrap;font-family:inherit">${escapeHtml(message)}</pre>`,
     ].join("\n");
 
+    const emailBody: Record<string, unknown> = {
+      from: env.FROM_EMAIL,
+      to: env.CONTACT_TO_EMAIL,
+      reply_to: email,
+      subject: `[Portfolio] ${subject}`,
+      html,
+      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`,
+    };
+
+    if (attachment) {
+      emailBody.attachments = [
+        {
+          filename: attachment.filename,
+          content: attachment.content,
+          content_type: attachment.contentType,
+        },
+      ];
+    }
+
     const resendRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${env.RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        from: env.FROM_EMAIL,
-        to: env.CONTACT_TO_EMAIL,
-        reply_to: email,
-        subject: `[Portfolio] ${subject}`,
-        html,
-        text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`,
-      }),
+      body: JSON.stringify(emailBody),
     });
 
     if (!resendRes.ok) {
