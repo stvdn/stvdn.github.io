@@ -1,3 +1,4 @@
+import { GitBranch, Globe } from "lucide-react";
 import type { Project as ProjectType } from "@/data/portfolio";
 
 interface ProjectEntryProps {
@@ -19,6 +20,28 @@ export function ProjectEntry({ project }: ProjectEntryProps) {
                 {tag}
               </span>
             ))}
+          </div>
+        )}
+        {project.links && project.links.length > 0 && (
+          <div className="flex flex-wrap gap-3 pt-1">
+            {project.links.map((link) => {
+              const Icon = link.kind === "code" ? GitBranch : Globe;
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/link inline-flex items-center gap-1.5 text-xs text-gray-300 transition-colors hover:text-white"
+                >
+                  <Icon size={14} className="shrink-0" aria-hidden="true" />
+                  <span className="relative">
+                    {link.label}
+                    <span className="absolute -bottom-0.5 left-1/2 h-px w-0 bg-current transition-all duration-300 group-hover/link:left-0 group-hover/link:w-full" />
+                  </span>
+                </a>
+              );
+            })}
           </div>
         )}
       </div>
