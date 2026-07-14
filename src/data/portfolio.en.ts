@@ -92,24 +92,38 @@ export const portfolioEn: PortfolioData = {
       description:
         "SaaS platform for inventory and sales management built with Next.js and React, featuring autonomous AI Agents to automate data entry and generate real-time business insights. Orchestrated with Docker-compose and deployed using Dokploy to ensure robust environment management and high-performance synchronization.",
       techTags: ["Next.js", "React", "AI Agents", "Docker", "Dokploy"],
+      links: [
+        { label: "Home", href: "https://usaventario.com/", kind: "live" },
+        { label: "Catalog", href: "https://the-girls-club-by-nany.usaventario.com/catalogo", kind: "live" },
+      ],
     },
     {
-      title: "React Portfolio",
+      title: "Next.js Portfolio",
       description:
-        "Personal portfolio built with React, Vite, and TypeScript, styled with Tailwind CSS, featuring 3D models (Spline) and smooth animations via Framer Motion. Deployed on GitHub Pages with CI/CD using GitHub Actions.",
-      techTags: ["React", "TypeScript", "Tailwind CSS", "Spline", "Framer Motion"],
+        "Personal portfolio and blog built with Next.js 16 (App Router), React 19, and TypeScript, styled with Tailwind CSS v4. Features locale-based i18n routing, motion animations, and a contact form backed by a Cloudflare Worker with Resend for email delivery. Deployed on GitHub Pages with CI/CD via GitHub Actions.",
+      techTags: ["Next.js", "React 19", "TypeScript", "Tailwind CSS v4", "Resend", "Cloudflare Workers"],
+      links: [
+        { label: "GitHub", href: "https://github.com/stvdn/stvdn.github.io", kind: "code" },
+      ],
     },
     {
       title: "Video to MP3 Converter",
       description:
         "Console application built to practice microservices architecture, featuring modular services using Python, Docker, RabbitMQ, and MariaDB.",
       techTags: ["Python", "Docker", "RabbitMQ", "MariaDB"],
+      links: [
+        { label: "GitHub", href: "https://github.com/stvdn/mp3converter", kind: "code" },
+      ],
     },
     {
       title: "Travel Planner",
       description:
         "Trip planning app built with Next.js, TypeScript, and Tailwind CSS, using PostgreSQL (Supabase) and Prisma. Features authentication, itinerary management, and a 3D globe visualization.",
       techTags: ["Next.js", "TypeScript", "PostgreSQL", "Supabase", "Prisma"],
+      links: [
+        { label: "Live", href: "https://travel-planner-gamma-green.vercel.app/", kind: "live" },
+        { label: "GitHub", href: "https://github.com/stvdn/travel_planner", kind: "code" },
+      ],
     },
   ],
   companies: [

@@ -29,10 +29,19 @@ export interface Company {
   logo: string;
 }
 
+export type ProjectLinkKind = "live" | "code";
+
+export interface ProjectLink {
+  label: string;
+  href: string;
+  kind: ProjectLinkKind;
+}
+
 export interface Project {
   title: string;
   description: string;
   techTags?: string[];
+  links?: ProjectLink[];
 }
 
 export interface PortfolioData {

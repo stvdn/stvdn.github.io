@@ -92,24 +92,38 @@ export const portfolioEs: PortfolioData = {
       description:
         "Plataforma SaaS para gestión de inventario y ventas construida con Next.js y React, con Agentes de IA autónomos para automatizar la entrada de datos y generar inteligencia de negocio en tiempo real. Orquestada con Docker-compose y desplegada usando Dokploy para garantizar una gestión robusta del entorno y sincronización de alto rendimiento.",
       techTags: ["Next.js", "React", "Agentes de IA", "Docker", "Dokploy"],
+      links: [
+        { label: "Inicio", href: "https://usaventario.com/", kind: "live" },
+        { label: "Catálogo", href: "https://the-girls-club-by-nany.usaventario.com/catalogo", kind: "live" },
+      ],
     },
     {
-      title: "React Portfolio",
+      title: "Next.js Portfolio",
       description:
-        "Portafolio personal construido con React, Vite y TypeScript, estilizado con Tailwind CSS, con modelos 3D (Spline) y animaciones fluidas vía Framer Motion. Desplegado en GitHub Pages con CI/CD usando GitHub Actions.",
-      techTags: ["React", "TypeScript", "Tailwind CSS", "Spline", "Framer Motion"],
+        "Portafolio personal y blog construido con Next.js 16 (App Router), React 19 y TypeScript, estilizado con Tailwind CSS v4. Incluye enrutado i18n por locale, animaciones con motion y un formulario de contacto respaldado por un Cloudflare Worker con Resend para el envío de correos. Desplegado en GitHub Pages con CI/CD vía GitHub Actions.",
+      techTags: ["Next.js", "React 19", "TypeScript", "Tailwind CSS v4", "Resend", "Cloudflare Workers"],
+      links: [
+        { label: "GitHub", href: "https://github.com/stvdn/stvdn.github.io", kind: "code" },
+      ],
     },
     {
       title: "Convertidor de Video a MP3",
       description:
         "Aplicación de consola construida para practicar arquitectura de microservicios, con servicios modulares usando Python, Docker, RabbitMQ y MariaDB.",
       techTags: ["Python", "Docker", "RabbitMQ", "MariaDB"],
+      links: [
+        { label: "GitHub", href: "https://github.com/stvdn/mp3converter", kind: "code" },
+      ],
     },
     {
       title: "Travel Planner",
       description:
         "App de planificación de viajes construida con Next.js, TypeScript y Tailwind CSS, usando PostgreSQL (Supabase) y Prisma. Incluye autenticación, gestión de itinerarios y una visualización de globo 3D.",
       techTags: ["Next.js", "TypeScript", "PostgreSQL", "Supabase", "Prisma"],
+      links: [
+        { label: "Demo", href: "https://travel-planner-gamma-green.vercel.app/", kind: "live" },
+        { label: "GitHub", href: "https://github.com/stvdn/travel_planner", kind: "code" },
+      ],
     },
   ],
   companies: [
