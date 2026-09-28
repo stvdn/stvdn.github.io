@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 
 export function TypingRole({ roles, active }: { roles: string[]; active: boolean }) {
@@ -10,7 +10,7 @@ export function TypingRole({ roles, active }: { roles: string[]; active: boolean
   const roleRef = useRef<HTMLParagraphElement>(null);
   const longestRole = roles.reduce((longest, role) => role.length > longest.length ? role : longest, "");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!active) return;
 
     if (reduceMotion) {
@@ -19,16 +19,18 @@ export function TypingRole({ roles, active }: { roles: string[]; active: boolean
     }
 
     let index = 0;
-    let count = characters[0].length;
-    let typing = false;
+    let count = 0;
+    let typing = true;
+    let firstPass = true;
     let inView = true;
     let timer: ReturnType<typeof setTimeout> | undefined;
 
     const pause = () => {
       clearTimeout(timer);
       index = 0;
-      count = characters[0].length;
-      typing = false;
+      count = 0;
+      typing = true;
+      firstPass = true;
       setCurrent({ index, count });
     };
 
@@ -38,9 +40,10 @@ export function TypingRole({ roles, active }: { roles: string[]; active: boolean
         setCurrent({ index, count });
         if (count === characters[index].length) {
           typing = false;
+          firstPass = false;
           timer = setTimeout(step, 2300);
         } else {
-          timer = setTimeout(step, 90);
+          timer = setTimeout(step, firstPass ? 125 : 90);
         }
       } else {
         count -= 1;
@@ -59,7 +62,7 @@ export function TypingRole({ roles, active }: { roles: string[]; active: boolean
     const updateActivity = () => {
       pause();
       if (inView && document.visibilityState === "visible") {
-        timer = setTimeout(step, 3000);
+        timer = setTimeout(step, 500);
       }
     };
 
