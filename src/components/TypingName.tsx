@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 
 export function TypingName({ name }: { name: string }) {
@@ -13,43 +13,29 @@ export function TypingName({ name }: { name: string }) {
   const reduceMotion = useReducedMotion();
   const headingRef = useRef<HTMLHeadingElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (reduceMotion) {
       setVisibleCount(total);
       return;
     }
 
-    let count = total;
-    let erasing = true;
+    let count = 0;
     let timer: ReturnType<typeof setTimeout> | undefined;
     let inView = true;
-
-    const pause = () => {
-      clearTimeout(timer);
-      count = total;
-      erasing = true;
-      setVisibleCount(total);
-    };
+    setVisibleCount(0);
 
     const step = () => {
-      count += erasing ? -1 : 1;
+      count += 1;
       setVisibleCount(count);
-
-      if (count === 0) {
-        erasing = false;
-        timer = setTimeout(step, 450);
-      } else if (count === total) {
-        erasing = true;
-        timer = setTimeout(step, 2200);
-      } else {
-        timer = setTimeout(step, erasing ? 80 : 190);
+      if (count < total) {
+        timer = setTimeout(step, 190);
       }
     };
 
     const updateActivity = () => {
-      pause();
-      if (inView && document.visibilityState === "visible") {
-        timer = setTimeout(step, 1600);
+      clearTimeout(timer);
+      if (count < total && inView && document.visibilityState === "visible") {
+        timer = setTimeout(step, count === 0 ? 250 : 190);
       }
     };
 
@@ -81,7 +67,7 @@ export function TypingName({ name }: { name: string }) {
         return (
           <span className="header-name-line" key={`${line.join("")}-${index}`} aria-hidden="true">
             <span className="header-name-measure">{line.join("")}</span>
-            <span className={`header-name-live${!reduceMotion && activeLine === index ? " is-active" : ""}`}>
+            <span className={`header-name-live${!reduceMotion && visibleCount < total && activeLine === index ? " is-active" : ""}`}>
               {hasPeriod ? visible.slice(0, -1) : visible}
               {hasPeriod && <span className="header-period">.</span>}
             </span>
