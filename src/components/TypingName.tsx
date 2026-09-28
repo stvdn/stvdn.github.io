@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 
-export function TypingName({ name }: { name: string }) {
+export function TypingName({ name, onComplete }: { name: string; onComplete: () => void }) {
   const lines = name.split(" ").map((part, index, parts) =>
     index === parts.length - 1 ? `${part}.` : part,
   );
@@ -16,6 +16,7 @@ export function TypingName({ name }: { name: string }) {
   useLayoutEffect(() => {
     if (reduceMotion) {
       setVisibleCount(total);
+      queueMicrotask(onComplete);
       return;
     }
 
@@ -29,6 +30,8 @@ export function TypingName({ name }: { name: string }) {
       setVisibleCount(count);
       if (count < total) {
         timer = setTimeout(step, 190);
+      } else {
+        onComplete();
       }
     };
 
@@ -52,7 +55,7 @@ export function TypingName({ name }: { name: string }) {
       observer.disconnect();
       document.removeEventListener("visibilitychange", updateActivity);
     };
-  }, [name, reduceMotion, total]);
+  }, [name, onComplete, reduceMotion, total]);
 
   let charactersBefore = 0;
   const activeLine = characters.findIndex((line) => visibleCount <= (charactersBefore += line.length));

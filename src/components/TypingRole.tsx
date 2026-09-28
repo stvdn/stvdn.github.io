@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 
-export function TypingRole({ roles }: { roles: string[] }) {
+export function TypingRole({ roles, active }: { roles: string[]; active: boolean }) {
   const characters = roles.map((role) => Array.from(role));
   const [current, setCurrent] = useState({ index: 0, count: characters[0].length });
   const reduceMotion = useReducedMotion();
@@ -11,6 +11,8 @@ export function TypingRole({ roles }: { roles: string[] }) {
   const longestRole = roles.reduce((longest, role) => role.length > longest.length ? role : longest, "");
 
   useEffect(() => {
+    if (!active) return;
+
     if (reduceMotion) {
       setCurrent({ index: 0, count: characters[0].length });
       return;
@@ -74,10 +76,10 @@ export function TypingRole({ roles }: { roles: string[] }) {
       observer.disconnect();
       document.removeEventListener("visibilitychange", updateActivity);
     };
-  }, [roles, reduceMotion]);
+  }, [active, roles, reduceMotion]);
 
   return (
-    <p className="header-role" ref={roleRef}>
+    <p className="header-role" data-visible={active} ref={roleRef}>
       <span className="sr-only">{roles.join(". ")}</span>
       <span className="header-role-rule" aria-hidden="true" />
       <span className="header-role-copy" aria-hidden="true">

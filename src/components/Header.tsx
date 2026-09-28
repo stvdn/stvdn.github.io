@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { MouseFollower } from "@/components/MouseFollower";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { TypingName } from "@/components/TypingName";
-import { TypingRole } from "@/components/TypingRole";
+import { HeaderIntroCopy } from "@/components/HeaderIntroCopy";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
@@ -38,10 +37,7 @@ export function Header({ name, role, roleAlternatives, locale, dictionary, navLi
           </nav>
         </div>
         <div className="header-intro">
-          <div className="header-intro-copy">
-            <TypingName name={name} />
-            <TypingRole roles={[role, ...roleAlternatives]} />
-          </div>
+          <HeaderIntroCopy name={name} roles={[role, ...roleAlternatives]} />
           <div className="header-workstation" aria-hidden="true">
             <svg viewBox="0 0 320 320" fill="none">
               <rect className="header-workstation-frame" x="31" y="35" width="258" height="183" rx="3" />
