@@ -9,7 +9,6 @@ export type {
   JobEntry,
   SkillCategory,
   Education,
-  Company,
   Project,
 } from "./portfolio.types";
 

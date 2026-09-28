@@ -7,7 +7,8 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { JobEntry } from "@/components/JobEntry";
 import { ProjectEntry } from "@/components/ProjectEntry";
 import { Footer } from "@/components/Footer";
-import { CompaniesMarquee } from "@/components/CompaniesMarquee";
+import { TechStackMarquee } from "@/components/TechStackMarquee";
+import { techStack } from "@/data/tech-stack";
 import { MouseFollower } from "@/components/MouseFollower";
 
 export function generateStaticParams() {
@@ -98,8 +99,8 @@ export default async function HomePage({ params }: PageProps) {
 
             <div className="closing-grid">
               <section className="portfolio-section">
-                <SectionHeading>{dictionary.sections.companies}</SectionHeading>
-                <CompaniesMarquee companies={portfolio.companies} />
+                <SectionHeading>{dictionary.sections.techStack}</SectionHeading>
+                <TechStackMarquee technologies={techStack} />
               </section>
               <section className="portfolio-section">
                 <SectionHeading>{dictionary.sections.certifications}</SectionHeading>

@@ -280,11 +280,12 @@ body { scrollbar-color: #555 #000; }
 .cursor-star { width: 12px; height: 12px; margin: -6px 0 0 -6px; }
 .cursor-spark { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; }
 .cursor-star svg, .cursor-spark svg { display: block; width: 100%; height: 100%; }
-.companies-marquee { overflow: hidden; }
-.companies-track { display: flex; width: max-content; }
-.companies-group { display: flex; align-items: center; flex: none; gap: 2.5rem; padding-right: 2.5rem; }
-.company-logo { width: auto; height: 2.25rem; max-width: 6rem; object-fit: contain; opacity: .7; filter: grayscale(1); transition: opacity .2s ease, filter .2s ease; }
-.company-logo:hover { opacity: 1; filter: grayscale(0); }
+.tech-marquee { overflow: hidden; }
+.tech-track { display: flex; width: max-content; }
+.tech-group { display: flex; align-items: center; flex: none; gap: 2.25rem; padding-right: 2.25rem; }
+.tech-item { display: inline-flex; align-items: center; flex: none; gap: .65rem; color: #b9b9b9; font-size: .875rem; white-space: nowrap; }
+.tech-logo { width: 2rem; height: 2rem; object-fit: contain; filter: brightness(0) invert(.73); transition: filter .2s ease; }
+.tech-item:hover .tech-logo { filter: brightness(0) invert(1); }
 
 @media (max-width: 900px) {
   .header-intro { grid-template-columns: minmax(0, 1fr) 13rem; gap: 1.5rem; }
@@ -310,7 +311,10 @@ body { scrollbar-color: #555 #000; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .cursor-star, .cursor-spark, .companies-group[aria-hidden="true"] { display: none; }
+  .cursor-star, .cursor-spark, .tech-group[aria-hidden="true"] { display: none; }
+  .tech-marquee { overflow: visible; }
+  .tech-track { width: auto; }
+  .tech-group { flex-wrap: wrap; gap: 1.25rem 2rem; padding-right: 0; }
   .header-name-type { clip-path: none; animation: none !important; }
   .header-name-type::after { display: none; }
   .header-role, .header-emblem { opacity: 1; transform: none; animation: none !important; }

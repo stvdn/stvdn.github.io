@@ -24,11 +24,6 @@ export interface Education {
   minor?: string;
 }
 
-export interface Company {
-  name: string;
-  logo: string;
-}
-
 export type ProjectLinkKind = "live" | "code";
 
 export interface ProjectLink {
@@ -53,6 +48,5 @@ export interface PortfolioData {
   skills: SkillCategory[];
   education: Education[];
   projects: Project[];
-  companies: Company[];
   certifications: string[];
 }

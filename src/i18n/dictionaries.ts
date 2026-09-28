@@ -31,7 +31,7 @@ export interface Dictionary {
     projects: string;
     skills: string;
     education: string;
-    companies: string;
+    techStack: string;
     certifications: string;
   };
   footer: { contact: string };

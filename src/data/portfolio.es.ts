@@ -128,12 +128,6 @@ export const portfolioEs: PortfolioData = {
       ],
     },
   ],
-  companies: [
-    { name: "Redsis", logo: "/companies/redsis.webp" },
-    { name: "WebCoop", logo: "/companies/webcoop.webp" },
-    { name: "Hausi", logo: "/companies/hausi.webp" },
-    { name: "Marcairis", logo: "/companies/marcairis.webp" },
-  ],
   certifications: [
     "Principios de Programación SOLID – LinkedIn Learning, Online",
     "Certificado Profesional de Fundamentos de Docker – LinkedIn Learning, Online",

@@ -10,7 +10,7 @@ export const dictionary: Dictionary = {
     projects: "Proyectos",
     skills: "Habilidades",
     education: "Educación",
-    companies: "Empresas",
+    techStack: "Tecnologías",
     certifications: "Certificaciones",
   },
   footer: {
