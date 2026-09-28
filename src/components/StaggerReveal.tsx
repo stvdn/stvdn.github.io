@@ -1,16 +1,16 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 const variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0.65, y: 14 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.15,
-      duration: 0.6,
-      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+      delay: i * 0.1,
+      duration: 0.65,
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
     },
   }),
 };
@@ -22,11 +22,12 @@ export function StaggerReveal({
   children: React.ReactNode;
   index: number;
 }) {
+  const reduceMotion = useReducedMotion();
   return (
     <motion.div
       custom={index}
       variants={variants}
-      initial="hidden"
+      initial={reduceMotion ? false : "hidden"}
       animate="visible"
     >
       {children}

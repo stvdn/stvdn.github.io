@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import type { Company } from "@/data/portfolio";
 
@@ -9,24 +10,30 @@ interface CompaniesMarqueeProps {
 }
 
 export function CompaniesMarquee({ companies }: CompaniesMarqueeProps) {
-  const doubled = [...companies, ...companies];
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <div className="overflow-hidden">
+    <div ref={ref} className="companies-marquee">
       <motion.div
-        className="flex items-center gap-12"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="companies-track"
+        animate={inView && !reduceMotion ? { x: ["0%", "-50%"] } : { x: "0%" }}
+        transition={inView && !reduceMotion ? { duration: 24, repeat: Infinity, ease: "linear" } : { duration: 0 }}
       >
-        {doubled.map((company, i) => (
-          <Image
-            key={i}
-            src={company.logo}
-            alt={company.name}
-            width={48}
-            height={48}
-            className="h-12 shrink-0 w-auto object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-          />
+        {[0, 1].map((copy) => (
+          <div key={copy} className="companies-group" aria-hidden={copy === 1}>
+            {companies.map((company) => (
+              <Image
+                key={company.name}
+                src={company.logo}
+                alt={copy === 0 ? company.name : ""}
+                width={48}
+                height={48}
+                className="company-logo"
+              />
+            ))}
+          </div>
         ))}
       </motion.div>
     </div>

@@ -7,11 +7,11 @@ interface SidebarProps {
 
 export function Sidebar({ portfolio }: SidebarProps) {
   return (
-    <aside className="pt-8 border-t-1 border-divider md:sticky md:top-4 md:self-start">
-      <p className="text-paragraph text-sm md:text-base md:px-2 md:pr-16">
+    <aside className="portfolio-aside">
+      <p className="portfolio-bio">
         {portfolio.bio}
       </p>
-      <div className="mt-18 flex flex-col gap-2">
+      <div className="contact-list">
         {portfolio.contactLinks.map((link) => (
           <ContactLink key={link.label} label={link.label} href={link.href} copyValue={link.copyValue} />
         ))}

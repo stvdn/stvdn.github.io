@@ -4,7 +4,7 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ children }: SectionHeadingProps) {
   return (
-    <h2 className="pt-7 pb-10 text-xs font-bold tracking-widest border-y border-divider">
+    <h2 className="section-heading">
       {children}
     </h2>
   );

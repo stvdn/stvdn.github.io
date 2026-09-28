@@ -11,42 +11,35 @@ interface HeaderProps {
   locale: Locale;
   dictionary: Dictionary;
   navLink: { href: string; label: string };
+  sectionLinks?: { href: string; label: string }[];
   showLanguageSwitcher?: boolean;
 }
 
-export function Header({ name, role, locale, dictionary, navLink, showLanguageSwitcher = true }: HeaderProps) {
+export function Header({ name, role, locale, dictionary, navLink, sectionLinks = [], showLanguageSwitcher = true }: HeaderProps) {
   return (
-    <header>
+    <header className="site-header">
       <MouseFollower>
-        <div className="flex items-start justify-between mb-12 md:pb-27">
-          <div>
-            <StaggerReveal index={0}>
-              <h1 className="text-link text-lg md:text-xl lg:text-2xl">
-                {name},
-              </h1>
-            </StaggerReveal>
-            <StaggerReveal index={1}>
-              <p className="text-gray-400 font-light text-link text-lg md:text-xl lg:text-2xl">
-                {role}
-              </p>
-            </StaggerReveal>
-          </div>
-          <div className="flex items-center gap-6">
-            {showLanguageSwitcher && (
-              <StaggerReveal index={2}>
-                <LanguageSwitcher current={locale} dictionary={dictionary} />
-              </StaggerReveal>
-            )}
-            <StaggerReveal index={3}>
-              <Link
-                href={navLink.href}
-                className="group relative text-link text-lg md:text-xl lg:text-2xl"
-              >
-                {navLink.label}
-                <span className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 bg-white transition-all duration-300 group-hover:left-0 group-hover:w-full" />
-              </Link>
-            </StaggerReveal>
-          </div>
+        <div className="header-nav-row">
+          <span className="header-monogram" aria-hidden="true">SP.</span>
+          <nav className="header-nav" aria-label="Primary">
+            {sectionLinks.map((link) => (
+              <a key={link.href} href={link.href} className="header-nav-link">
+                {link.label}
+              </a>
+            ))}
+            <Link href={navLink.href} className="header-nav-link">
+              {navLink.label}
+            </Link>
+            {showLanguageSwitcher && <LanguageSwitcher current={locale} dictionary={dictionary} />}
+          </nav>
+        </div>
+        <div className="header-intro">
+          <StaggerReveal index={0}>
+            <h1>{name}<span className="header-period">.</span></h1>
+          </StaggerReveal>
+          <StaggerReveal index={1}>
+            <p>{role}</p>
+          </StaggerReveal>
         </div>
       </MouseFollower>
     </header>

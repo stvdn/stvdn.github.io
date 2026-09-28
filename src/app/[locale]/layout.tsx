@@ -52,7 +52,7 @@ export default async function LocaleLayout({ children, params }: RouteProps) {
   return (
     <html lang={typedLocale} className={`${schibstedGrotesk.variable} h-full`}>
       <body className="min-h-full bg-black font-sans text-white antialiased">
-        <div className="mx-auto max-w-7xl px-8 py-8 md:pt-16">
+        <div className="mx-auto max-w-7xl px-5 py-6 sm:px-8 md:px-12 md:py-10">
           {children}
         </div>
         <ScrollToTop />

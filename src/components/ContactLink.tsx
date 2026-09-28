@@ -32,38 +32,38 @@ export function ContactLink({ label, href, copyValue }: ContactLinkProps) {
   const isExternal = href.startsWith("http");
 
   return (
-    <div className="group border-t border-divider px-2 py-4 m inline-flex items-center gap-1 text-xs text-white transition-colors hover:text-gray-300">
+    <div className="contact-row">
       <a
         href={href}
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noopener noreferrer" : undefined}
+        className="contact-row-link"
       >
-        <span className="relative">
-          {label}
-          <span className="absolute -bottom-0.5 left-1/2 h-px w-0 bg-current transition-all duration-300 group-hover:left-0 group-hover:w-full" />
-        </span>
+        {label}
       </a>
-      <button
-        type="button"
-        onClick={handleCopy}
-        disabled={!copyValue}
-        aria-label={`Copy ${copyValue ?? label}`}
-        className="inline-flex h-3.5 w-3.5 items-center justify-center text-white/80 transition-colors hover:text-white disabled:cursor-default disabled:opacity-30"
-      >
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.span
-            key={copied ? "copied" : "clipboard"}
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.6 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-            aria-hidden="true"
-            className="inline-flex"
-          >
-            {copied ? <ClipboardCheck size={14} /> : <Clipboard size={14} />}
-          </motion.span>
-        </AnimatePresence>
-      </button>
+      {copyValue && (
+        <button
+          type="button"
+          onClick={handleCopy}
+          aria-label={`${copied ? "Copied" : "Copy"} ${label}`}
+          className="contact-copy"
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={copied ? "copied" : "clipboard"}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              aria-hidden="true"
+              className="inline-flex"
+            >
+              {copied ? <ClipboardCheck size={16} /> : <Clipboard size={16} />}
+            </motion.span>
+          </AnimatePresence>
+        </button>
+      )}
+      <span className="sr-only" aria-live="polite">{copied ? `${label} copied` : ""}</span>
     </div>
   );
 }

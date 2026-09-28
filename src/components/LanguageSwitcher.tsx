@@ -26,11 +26,12 @@ export function LanguageSwitcher({
   const pathname = usePathname();
 
   return (
-    <div className="flex items-center gap-2">
-      <Globe size={20} className="shrink-0" aria-hidden="true" />
+    <div className="flex items-center gap-2 border-l border-divider pl-4" aria-label="Language">
+      <Globe size={15} strokeWidth={1.7} className="shrink-0 text-gray-400" aria-hidden="true" />
       <Link
         href={getAlternatePath(pathname, "en")}
         aria-label="Switch to English"
+        aria-current={current === "en" ? "page" : undefined}
         className={`text-xs font-medium transition-colors ${
           current === "en"
             ? "text-white"
@@ -42,6 +43,7 @@ export function LanguageSwitcher({
       <Link
         href={getAlternatePath(pathname, "es")}
         aria-label="Switch to Spanish"
+        aria-current={current === "es" ? "page" : undefined}
         className={`text-xs font-medium transition-colors ${
           current === "es"
             ? "text-white"
