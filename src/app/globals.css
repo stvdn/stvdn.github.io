@@ -206,11 +206,10 @@ body { scrollbar-color: #555 #000; }
 .header-intro { display: grid; grid-template-columns: minmax(0, 1fr) clamp(13rem, 26vw, 20rem); align-items: center; gap: clamp(2rem, 7vw, 7rem); margin-top: clamp(5rem, 9vw, 8rem); }
 .header-intro-copy { min-width: 0; }
 .header-intro h1 { width: max-content; max-width: 100%; font-size: clamp(3.3rem, 7.7vw, 6rem); font-weight: 600; line-height: 1.02; letter-spacing: -.04em; }
-.header-name-line { display: block; width: max-content; max-width: 100%; }
-.header-name-type { position: relative; display: inline-block; white-space: nowrap; clip-path: inset(0 100% 0 0); animation: header-type-first 7s linear infinite; }
-.header-name-line:nth-child(2) .header-name-type { animation-name: header-type-last; }
-.header-name-type::after { position: absolute; top: .06em; bottom: .05em; left: 0; width: 2px; background: #fff; content: ""; animation: header-caret-first 7s linear infinite; }
-.header-name-line:nth-child(2) .header-name-type::after { animation-name: header-caret-last; }
+.header-name-line { position: relative; display: block; width: max-content; max-width: 100%; }
+.header-name-measure { visibility: hidden; white-space: nowrap; }
+.header-name-live { position: absolute; top: 0; left: 0; white-space: nowrap; }
+.header-name-live.is-active::after { display: inline-block; width: 2px; height: .82em; margin-left: .04em; background: #fff; vertical-align: -.08em; content: ""; animation: header-caret-blink .8s step-end infinite; }
 .header-period { color: #8a8a8a; }
 .header-role { display: flex; align-items: center; gap: .85rem; margin-top: 1.5rem; color: #fff; font-size: clamp(1.125rem, 2vw, 1.5rem); letter-spacing: -.02em; opacity: 0; animation: header-role-in .5s cubic-bezier(.16,1,.3,1) 2.4s both; }
 .header-role-rule { flex: none; width: 2.25rem; height: 1px; background: #929292; }
@@ -220,35 +219,7 @@ body { scrollbar-color: #555 #000; }
 .header-workstation-frame { stroke: #929292; stroke-width: 2; }
 .header-workstation-detail { stroke: #3b3b3b; stroke-width: 2; }
 .header-workstation-code { stroke: #fff; stroke-width: 3; }
-@keyframes header-type-first {
-  0% { clip-path: inset(0 100% 0 0); animation-timing-function: steps(6, end); }
-  18%, 80% { clip-path: inset(0 0 0 0); }
-  80% { animation-timing-function: steps(6, end); }
-  90%, 100% { clip-path: inset(0 100% 0 0); }
-}
-@keyframes header-type-last {
-  0%, 21% { clip-path: inset(0 100% 0 0); }
-  21% { animation-timing-function: steps(9, end); }
-  43%, 67% { clip-path: inset(0 0 0 0); }
-  67% { animation-timing-function: steps(9, end); }
-  78%, 100% { clip-path: inset(0 100% 0 0); }
-}
-@keyframes header-caret-first {
-  0% { left: 0; opacity: 1; animation-timing-function: steps(6, end); }
-  18% { left: calc(100% - 2px); opacity: 1; }
-  19%, 79% { left: calc(100% - 2px); opacity: 0; }
-  80% { left: calc(100% - 2px); opacity: 1; animation-timing-function: steps(6, end); }
-  90% { left: 0; opacity: 1; }
-  91%, 100% { left: 0; opacity: 0; }
-}
-@keyframes header-caret-last {
-  0%, 21% { left: 0; opacity: 0; }
-  21% { opacity: 1; animation-timing-function: steps(9, end); }
-  43%, 67% { left: calc(100% - 2px); opacity: 1; }
-  67% { animation-timing-function: steps(9, end); }
-  78% { left: 0; opacity: 1; }
-  79%, 100% { left: 0; opacity: 0; }
-}
+@keyframes header-caret-blink { 50% { opacity: 0; } }
 @keyframes header-role-in { to { opacity: 1; } }
 @keyframes header-workstation-in { to { opacity: 1; } }
 
@@ -340,8 +311,7 @@ body { scrollbar-color: #555 #000; }
   .tech-marquee { overflow: visible; }
   .tech-track { width: auto; }
   .tech-group { flex-wrap: wrap; gap: 1.25rem 2rem; padding-right: 0; }
-  .header-name-type { clip-path: none; animation: none !important; }
-  .header-name-type::after { display: none; }
+  .header-name-live::after { display: none !important; }
   .header-role, .header-workstation { opacity: 1; animation: none !important; }
 }
 @media (hover: none) { .cursor-star, .cursor-spark { display: none; } }

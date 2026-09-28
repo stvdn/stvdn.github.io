@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MouseFollower } from "@/components/MouseFollower";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { TypingName } from "@/components/TypingName";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
@@ -15,8 +16,6 @@ interface HeaderProps {
 }
 
 export function Header({ name, role, locale, dictionary, navLink, sectionLinks = [], showLanguageSwitcher = true }: HeaderProps) {
-  const nameParts = name.split(" ");
-
   return (
     <header className="site-header">
       <MouseFollower>
@@ -38,15 +37,7 @@ export function Header({ name, role, locale, dictionary, navLink, sectionLinks =
         </div>
         <div className="header-intro">
           <div className="header-intro-copy">
-            <h1 aria-label={name}>
-              {nameParts.map((part, index) => (
-                <span className="header-name-line" key={`${part}-${index}`} aria-hidden="true">
-                  <span className="header-name-type">
-                    {part}{index === nameParts.length - 1 && <span className="header-period">.</span>}
-                  </span>
-                </span>
-              ))}
-            </h1>
+            <TypingName name={name} />
             <p className="header-role"><span className="header-role-rule" aria-hidden="true" />{role}</p>
           </div>
           <div className="header-workstation" aria-hidden="true">
