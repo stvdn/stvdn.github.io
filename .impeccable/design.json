@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-28T14:38:36-05:00",
+  "title": "Design System: Steven Peñafiel Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "ink-black": { "role": "neutral", "displayName": "Ink Black", "canonical": "#000000", "tonalRamp": ["#171717", "#262626", "#404040", "#525252", "#737373", "#a3a3a3", "#d4d4d4", "#f5f5f5"] },
+      "paper-white": { "role": "primary", "displayName": "Paper White", "canonical": "#ffffff", "tonalRamp": ["#171717", "#262626", "#404040", "#525252", "#737373", "#a3a3a3", "#d4d4d4", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero name only." },
+      "section": { "displayName": "Section", "purpose": "Portfolio section headings." },
+      "body": { "displayName": "Body", "purpose": "Project and experience descriptions." },
+      "label": { "displayName": "Label", "purpose": "Navigation, metadata, and tags." }
+    },
+    "motion": [
+      { "name": "subtle-reveal", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Scroll and hover easing." },
+      { "name": "star-fade", "value": "550ms", "purpose": "Short trailing star lifetime." }
+    ],
+    "breakpoints": [
+      { "name": "sidebar-stack", "value": "900px" },
+      { "name": "single-column", "value": "600px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Contact Button",
+      "kind": "button",
+      "refersTo": "contact-button",
+      "description": "White primary action inside the contact modal.",
+      "html": "<button class=\"ds-contact-button\">Send message</button>",
+      "css": ".ds-contact-button { background: #fff; color: #000; border: 0; padding: 0.75rem 1rem; font: 700 0.875rem Schibsted Grotesk, sans-serif; cursor: pointer; transition: opacity .2s ease; } .ds-contact-button:hover { opacity: .82; } .ds-contact-button:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "description": "Muted compact navigation that brightens on interaction.",
+      "html": "<a class=\"ds-nav-link\" href=\"#projects\">Projects</a>",
+      "css": ".ds-nav-link { color: #b8b8b8; font: 600 .8125rem Schibsted Grotesk, sans-serif; text-decoration: none; transition: color .2s ease; } .ds-nav-link:hover, .ds-nav-link:focus-visible { color: #fff; } .ds-nav-link:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }"
+    },
+    {
+      "name": "Project Entry",
+      "kind": "card",
+      "description": "Flat content row separated by a fine rule.",
+      "html": "<article class=\"ds-project-entry\"><h3>Project title</h3><p>Concise project description.</p></article>",
+      "css": ".ds-project-entry { border-top: 1px solid #292929; padding: 1.8rem 0 2.25rem; color: #fff; font-family: Schibsted Grotesk, sans-serif; } .ds-project-entry h3 { margin: 0 0 1rem; font-size: 1.4rem; letter-spacing: -.025em; } .ds-project-entry p { margin: 0; color: #b9b9b9; font-size: .9375rem; line-height: 1.65; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Minimal Engineering Journal",
+    "overview": "An open, dark canvas lets the work, experience, and typography carry the page. The voice is direct and precise. Small motion cues add life to the interface while keeping the content easy to scan.",
+    "keyCharacteristics": ["black canvas", "white type", "generous space", "fine dividers", "restrained motion"],
+    "rules": [
+      { "name": "The Monochrome Rule", "body": "Keep the black, white, and gray palette as the dominant visual language.", "section": "colors" },
+      { "name": "The Scan Rule", "body": "Titles, dates, and descriptions should be readable as distinct levels without decorative type treatments.", "section": "typography" }
+    ],
+    "dos": ["Do keep content hierarchy clear with spacing, typography, and fine rules.", "Do keep interactions brief and respect reduced motion."],
+    "donts": ["Don't add decorative color that competes with the portfolio content.", "Don't turn portfolio entries into heavy raised cards."]
+  }
+}
