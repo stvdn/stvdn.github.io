@@ -4,11 +4,12 @@ export const portfolioEn: PortfolioData = {
   name: "Steven Peñafiel",
   role: "Software Engineer",
   bio:
-    "Master's student in Systems Architecture Design with experience in web and mobile application development. Currently focused on automating processes and business rules, always learning cutting-edge technologies with the knowledge to apply them effectively.",
+    "Software engineer with 5+ years of experience in enterprise automation, backend integrations, and full-stack development. I build reliable workflows and APIs with Python, PowerShell, and SQL Server, and develop web products with TypeScript, Next.js, and React.",
   contactLinks: [
     { label: "stevendanny2000@gmail.com", href: "mailto:stevendanny2000@gmail.com", copyValue: "stevendanny2000@gmail.com" },
     { label: "+593 958836085", href: "tel:+593958836085", copyValue: "+593958836085" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/stevendanny/", copyValue: "https://www.linkedin.com/in/stevendanny/" },
+    { label: "GitHub", href: "https://github.com/stvdn", copyValue: "https://github.com/stvdn" },
   ],
   experience: [
     {
@@ -19,6 +20,7 @@ export const portfolioEn: PortfolioData = {
       bullets: [
         "Currently refactoring the core migration engine into a tool-agnostic framework using PowerShell, enabling multi-source migrations from diverse enterprise orchestrators while increasing code reusability and reducing technical debt.",
         "Automated the migration of 5,600+ business processes to a modern orchestrator (JAMS), eliminating legacy errors and improving system modularity.",
+        "Gathered requirements with banking stakeholders, troubleshot batch-processing issues, and supported critical production releases and deployments.",
         "Designed and developed Python ETL solutions to synchronize data between SQL Server databases and REST APIs, ensuring data consistency across platforms.",
         "Architected real-time resource validation (CPU/RAM) using PowerShell and WinRM for remote execution of enterprise packages.",
         "Reduced manual operational errors by 80% by integrating custom business logic into JAMS using Python and PowerShell.",
@@ -63,22 +65,22 @@ export const portfolioEn: PortfolioData = {
   skills: [
     {
       title: "Languages",
-      skills: ["Python", "JavaScript", "TypeScript", "PowerShell", "PHP", "Dart", "C#/.NET"],
+      skills: ["Python", "JavaScript", "TypeScript", "PowerShell", "PHP", "Dart"],
     },
     {
       title: "Frameworks & Automation",
-      skills: ["React / Next.js", "Angular", "Laravel", "Flask / FastAPI", "AI Agents & LLM Integration", "JAMS / GoAnyWhere"],
+      skills: ["React / Next.js", "Angular", "Laravel", "Flask / FastAPI", "LLM API Integration", "JAMS / GoAnywhere"],
     },
     {
       title: "Technologies & Practices",
-      skills: ["Docker", "AWS", "SQL & NoSQL", "Git", "OOP & SOLID Principles", "Solution Architecture", "Workflow Automation"],
+      skills: ["Docker / Docker Compose", "AWS / Azure", "PostgreSQL / SQL Server", "Git / GitHub Actions", "REST APIs / ETL", "OOP & SOLID Principles", "Workflow Automation"],
     },
   ],
   education: [
     {
       university: "Universidad Politécnica Salesiana, Ecuador",
       degree: "Master in Software Engineering – Mention in Systems Architecture Design",
-      dateRange: "Expected 2027",
+      dateRange: "Expected July 2027",
     },
     {
       university: "Pontificia Universidad Católica, Ecuador",
@@ -90,8 +92,8 @@ export const portfolioEn: PortfolioData = {
     {
       title: "Ventario",
       description:
-        "SaaS platform for inventory and sales management built with Next.js and React, featuring autonomous AI Agents to automate data entry and generate real-time business insights. Orchestrated with Docker-compose and deployed using Dokploy to ensure robust environment management and high-performance synchronization.",
-      techTags: ["Next.js", "React", "AI Agents", "Docker", "Dokploy"],
+        "SaaS platform for inventory and sales management built with Next.js and React. Integrated the Gemini API for text generation and Replicate API for image generation; containerized with Docker Compose and deployed with Dokploy.",
+      techTags: ["Next.js", "React", "Gemini API", "Replicate API", "Docker", "Dokploy"],
       links: [
         { label: "Home", href: "https://usaventario.com/", kind: "live" },
         { label: "Catalog", href: "https://the-girls-club-by-nany.usaventario.com/catalogo", kind: "live" },
