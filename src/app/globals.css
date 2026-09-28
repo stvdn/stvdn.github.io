@@ -197,7 +197,9 @@ body { scrollbar-color: #555 #000; }
 
 .site-header { margin-bottom: clamp(5rem, 10vw, 9rem); }
 .header-nav-row { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-.header-monogram { font-size: 1.125rem; font-weight: 600; letter-spacing: -.04em; }
+.header-wordmark { display: inline-flex; align-items: center; min-height: 2rem; color: #fff; font-size: 1.125rem; font-weight: 600; letter-spacing: -.035em; line-height: 1; text-decoration: none; }
+.header-wordmark span { color: #8a8a8a; }
+.header-wordmark:hover span, .header-wordmark:focus-visible span { color: #fff; }
 .header-nav { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: clamp(1rem, 2.8vw, 2.25rem); }
 .header-nav-link { color: #b8b8b8; font-size: .8125rem; font-weight: 600; transition: color .2s ease; }
 .header-nav-link:hover, .header-nav-link:focus-visible { color: #fff; }
@@ -272,7 +274,7 @@ body { scrollbar-color: #555 #000; }
 @media (max-width: 600px) {
   .site-header { margin-bottom: 5rem; }
   .header-nav-row { align-items: flex-start; }
-  .header-monogram { padding-top: .1rem; }
+  .header-wordmark { padding-top: .1rem; }
   .header-nav { max-width: 17rem; gap: .75rem 1rem; }
   .header-intro { margin-top: 6rem; }
   .header-intro h1 { overflow-wrap: anywhere; }

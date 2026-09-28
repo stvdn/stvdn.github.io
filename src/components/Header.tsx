@@ -20,7 +20,9 @@ export function Header({ name, role, locale, dictionary, navLink, sectionLinks =
     <header className="site-header">
       <MouseFollower>
         <div className="header-nav-row">
-          <span className="header-monogram" aria-hidden="true">SP.</span>
+          <Link href={`/${locale}`} className="header-wordmark" aria-label={`${name} — home`}>
+            stvdn<span aria-hidden="true">.</span>
+          </Link>
           <nav className="header-nav" aria-label="Primary">
             {sectionLinks.map((link) => (
               <a key={link.href} href={link.href} className="header-nav-link">
