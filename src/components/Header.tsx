@@ -49,14 +49,17 @@ export function Header({ name, role, locale, dictionary, navLink, sectionLinks =
             </h1>
             <p className="header-role"><span className="header-role-rule" aria-hidden="true" />{role}</p>
           </div>
-          <div className="header-emblem" aria-hidden="true">
+          <div className="header-workstation" aria-hidden="true">
             <svg viewBox="0 0 320 320" fill="none">
-              <circle className="header-emblem-ring" cx="160" cy="160" r="124" />
-              <circle className="header-emblem-orbit" cx="160" cy="160" r="91" />
-              <path className="header-emblem-axis" d="M160 0v49m0 222v49M0 160h49m222 0h49" />
-              <path className="header-emblem-star" d="m160 68 19.5 72.5L252 160l-72.5 19.5L160 252l-19.5-72.5L68 160l72.5-19.5L160 68Z" />
-              <circle className="header-emblem-dot" cx="160" cy="36" r="3" />
-              <circle className="header-emblem-dot" cx="284" cy="160" r="3" />
+              <rect className="header-workstation-frame" x="31" y="35" width="258" height="183" rx="3" />
+              <path className="header-workstation-frame" d="M31 62h258M31 198h258M143 218v28m34-28v28m-62 1h90" />
+              <circle className="header-workstation-detail" cx="45" cy="49" r="2" />
+              <circle className="header-workstation-detail" cx="56" cy="49" r="2" />
+              <circle className="header-workstation-detail" cx="67" cy="49" r="2" />
+              <path className="header-workstation-code" d="m62 94 9 8-9 8m19 0h18" />
+              <path className="header-workstation-detail" d="M62 130h61m10 0h31M62 150h25m10 0h89M62 170h48m10 0h28" />
+              <path className="header-workstation-frame" d="M47 263h226l17 29H30l17-29Z" />
+              <path className="header-workstation-detail" d="M51 273h218M43 283h234m-207-20-4 29m43-29-2 29m43-29v29m44-29 2 29m41-29 5 29" />
             </svg>
           </div>
         </div>
