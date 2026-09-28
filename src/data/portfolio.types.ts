@@ -42,6 +42,7 @@ export interface Project {
 export interface PortfolioData {
   name: string;
   role: string;
+  roleAlternatives: [string, string];
   bio: string;
   contactLinks: ContactLink[];
   experience: JobEntry[];

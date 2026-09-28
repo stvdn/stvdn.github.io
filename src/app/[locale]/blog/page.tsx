@@ -32,6 +32,7 @@ export default async function BlogPage({ params }: PageProps) {
       <Header
         name={portfolio.name}
         role={portfolio.role}
+        roleAlternatives={portfolio.roleAlternatives}
         locale={typedLocale}
         dictionary={dictionary}
         navLink={{ href: `/${typedLocale}`, label: dictionary.nav.about }}

@@ -3,6 +3,7 @@ import type { PortfolioData } from "./portfolio.types";
 export const portfolioEn: PortfolioData = {
   name: "Steven Peñafiel",
   role: "Software Engineer",
+  roleAlternatives: ["Software Engineering master's (in progress)", "Technology enthusiast"],
   bio:
     "Software engineer with 5+ years of experience in enterprise automation, backend integrations, and full-stack development. I build reliable workflows and APIs with Python, PowerShell, and SQL Server, and develop web products with TypeScript, Next.js, and React.",
   contactLinks: [

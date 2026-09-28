@@ -32,6 +32,7 @@ export default async function HomePage({ params }: PageProps) {
       <Header
         name={portfolio.name}
         role={portfolio.role}
+        roleAlternatives={portfolio.roleAlternatives}
         locale={typedLocale}
         dictionary={dictionary}
         navLink={{ href: `/${typedLocale}/blog`, label: dictionary.nav.blog }}

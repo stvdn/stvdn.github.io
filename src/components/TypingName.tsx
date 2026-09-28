@@ -40,9 +40,9 @@ export function TypingName({ name }: { name: string }) {
         timer = setTimeout(step, 450);
       } else if (count === total) {
         erasing = true;
-        timer = setTimeout(step, 1800);
+        timer = setTimeout(step, 2200);
       } else {
-        timer = setTimeout(step, erasing ? 65 : 115);
+        timer = setTimeout(step, erasing ? 80 : 190);
       }
     };
 
